@@ -2,17 +2,10 @@ import { CategoryCard } from "components/cards/CategoryCard";
 import { EventCard } from "components/cards/EventCard";
 import { CarouselPostCard, PostSmCard } from "components/cards/PostCard";
 import { ProjectCard } from "components/cards/ProjectCard";
-import { CategoryPage } from "resources/category";
-import { EventPage } from "resources/event";
-import { PostPage } from "resources/post";
-import { ProjectPage } from "resources/project";
 import { CustomFlowbiteTheme, Flowbite, Carousel, Accordion, Banner, Breadcrumb } from "flowbite-react";
-import { useState, useEffect } from "react";
-import { HomeMock } from "mock/MockList";
 import { Link } from "react-router-dom";
-import axios from "axios";
-import { baseUrl } from "utils/requests";
 import { FaHouse, FaX } from "react-icons/fa6";
+import { categoryMock, eventMock, postMock, projectMock } from "mock/MockData";
 
 export const customTheme: CustomFlowbiteTheme = {
     carousel: {
@@ -38,30 +31,6 @@ export const customTheme: CustomFlowbiteTheme = {
 
 export default function Home() {
 
-    const [posts, setPosts] = useState<PostPage>({ content: [], page: { number: 0, totalElements: 0 } });
-    const [projects, setProjects] = useState<ProjectPage>({ content: [], page: { number: 0, size: 0, totalElements: 0, totalPages: 0 } })
-    const [categories, setCategories] = useState<CategoryPage>({ content: [], page: { number: 0, totalElements: 0 } });
-    const [events, setEvents] = useState<EventPage>({ content: [], page: { number: 0, totalElements: 0 } })
-
-    useEffect(() => {
-        axios.get(`${baseUrl}/posts?size=6&sort=id,DESC`)
-            .then((response) => {
-                setPosts(response.data);
-            });
-        axios.get(`${baseUrl}/projects?size=8&sort=id`)
-            .then((response) => {
-                setProjects(response.data);
-            })
-        axios.get(`${baseUrl}/categories?size=12`)
-            .then((response) => {
-                setCategories(response.data);
-            });
-        axios.get(`${baseUrl}/events?size=9`)
-            .then((response) => {
-                setEvents(response.data);
-            })
-    }, []);
-
     return (
         <>
             <div className="mt-10">
@@ -72,6 +41,18 @@ export default function Home() {
                         </Link>
                     </Breadcrumb.Item>
                 </Breadcrumb>
+                <Banner className="mb-4">
+                    <div className="flex w-full justify-between border-b border-gray-200 bg-gray-50 p-4">
+                        <div className="flex items-center">
+                            <p className="flex items-center text-sm  font-bold text-red-500 ">
+                                Esta é uma demonstração com funcionalidades limitadas, possibilitando apenas a visualização de dados estáticos.
+                            </p>
+                        </div>
+                        <Banner.CollapseButton color="gray" className="border-0 bg-transparent text-gray-500 dark:text-gray-400">
+                            <FaX className="h-4 w-4" />
+                        </Banner.CollapseButton>
+                    </div>
+                </Banner>
                 <Accordion collapseAll>
                     <Accordion.Panel>
                         <Accordion.Title>
@@ -85,103 +66,103 @@ export default function Home() {
                                 O Diário Caxias se compromete em estabelecer um vínculo entre a educação formal e a informal, permitindo que pessoas das mais diversas áreas ou níveis acadêmicos possam participar ativamente das atividades propostas, almejando uma participação multidisciplinar dos Caxienses.
                                 Para saber um pouco mais sobre os recentes projetos ou eventos, clique nas últimas nóticias que aparecem aqui ao lado e faça a sua história em sua cidade.
                             </p>
-                            {!posts.content.length ?
-                                <Banner className="mb-4">
-                                    <div className="flex w-full justify-between border-b border-gray-200 bg-gray-50 p-4">
-                                        <div className="flex items-center">
-                                            <p className="flex items-center text-sm  font-bold text-red-500 ">
-                                                Esta é uma demonstração com funcionalidades limitadas, possibilitando apenas a visualização de dados estáticos.
-                                            </p>
-                                        </div>
-                                        <Banner.CollapseButton color="gray" className="border-0 bg-transparent text-gray-500 dark:text-gray-400">
-                                            <FaX className="h-4 w-4" />
-                                        </Banner.CollapseButton>
-                                    </div>
-                                </Banner>
-                                : ""
-                            }
+
+
                         </Accordion.Content>
                     </Accordion.Panel>
                 </Accordion>
             </div>
-            {!projects.content.length ? <HomeMock /> :
-                <div>
-                    <div className="items-center p-4 mt-4">
-                        <div className="flex justify-between w-full sm:text-lg md:text-xl">
-                            <h1>Últimas Postagens</h1>
-                            <Link to={"/postagens"} className="text-blue-600 hover:text-blue-400 hover:underline">
-                                Ver mais
-                            </Link>
-                        </div>
+            <div>
+                <div className="items-center p-4 mt-4">
+                    <div className="flex justify-between w-full sm:text-lg md:text-xl">
+                        <h1>Últimas Postagens</h1>
+                        <Link to={"/postagens"} className="text-blue-600 hover:text-blue-400 hover:underline">
+                            Ver mais
+                        </Link>
+                    </div>
 
-                        <div className="grid md:grid-cols-2 items-center">
-                            <div className="h-96 max-w-[600px] w-full">
-                                <Flowbite theme={{ theme: customTheme }}>
-                                    <Carousel>
-                                        {posts.content.map(post => (
+                    <div className="grid md:grid-cols-2 items-center">
+                        <div className="h-96 max-w-[600px] w-full">
+                            <Flowbite theme={{ theme: customTheme }}>
+                                <Carousel>
+                                    {postMock.map(post => {
+                                        postMock.length = 6
+                                        return (
                                             <div key={post.postId} className="flex justify-center items-center w-full">
                                                 <CarouselPostCard post={post} />
                                             </div>
-                                        ))}
-                                    </Carousel>
-                                </Flowbite>
-                            </div>
+                                        )
+                                    })}
+                                </Carousel>
+                            </Flowbite>
+                        </div>
 
-                            <div className="mt-4 p-4">
-                                <div className="divide-y divide-gray-300">
-                                    {posts.content.map(post => (
+                        <div className="mt-4 p-4">
+                            <div className="divide-y divide-gray-300">
+                                {postMock.map(post => {
+                                    postMock.length = 6
+                                    return (
                                         <div key={post.postId}>
                                             <PostSmCard post={post} />
                                         </div>
-                                    ))}
-                                </div>
+                                    )
+                                })}
                             </div>
                         </div>
                     </div>
+                </div>
 
-                    <div className="flex justify-between p-4 sm:text-lg md:text-xl">
-                        <h1>Projetos recentes</h1>
-                        <Link to={"/projetos"} className="text-blue-600 hover:text-blue-400 hover:underline">
-                            Ver mais
-                        </Link>
-                    </div>
-                    <div className="grid grid-cols-1 lg:grid-cols-2 gap-y-10 gap-x-6 items-start p-8">
-                        {projects.content?.map(project => (
+                <div className="flex justify-between p-4 sm:text-lg md:text-xl">
+                    <h1>Projetos recentes</h1>
+                    <Link to={"/projetos"} className="text-blue-600 hover:text-blue-400 hover:underline">
+                        Ver mais
+                    </Link>
+                </div>
+                <div className="grid grid-cols-1 lg:grid-cols-2 gap-y-10 gap-x-6 items-start p-8">
+                    {projectMock.map(project => {
+                        projectMock.length = 8
+                        return (
                             <div key={project.id} className="relative flex flex-col sm:flex-row xl:flex-col items-start ">
                                 <ProjectCard project={project} />
                             </div>
-                        ))}
-                    </div>
+                        )
+                    })}
+                </div>
 
-                    <div className="flex justify-between p-4 sm:text-lg md:text-xl" >
-                        <h1>Categorias</h1>
-                        <Link to={"/categorias"} className="text-blue-600 hover:text-blue-400 hover:underline">
-                            Ver mais
-                        </Link>
-                    </div>
-                    <div className="grid grid-cols-2 md:grid-cols-4 lg:grid-cols-6 gap-y-6 gap-x-4 items-start p-8">
-                        {categories?.content.map(category => (
+                <div className="flex justify-between p-4 sm:text-lg md:text-xl" >
+                    <h1>Categorias</h1>
+                    <Link to={"/categorias"} className="text-blue-600 hover:text-blue-400 hover:underline">
+                        Ver mais
+                    </Link>
+                </div>
+                <div className="grid grid-cols-2 md:grid-cols-4 lg:grid-cols-6 gap-y-6 gap-x-4 items-start p-8">
+                    {categoryMock.map(category => {
+                        categoryMock.length = 12
+                        return (
                             <div key={category.id} >
                                 <CategoryCard category={category} />
                             </div>
-                        ))}
-                    </div>
+                        )
+                    })}
+                </div>
 
-                    <div className="flex justify-between p-4 sm:text-lg md:text-xl">
-                        <h1>Eventos recentes</h1>
-                        <Link to={"/eventos"} className="text-blue-600 hover:text-blue-400 hover:underline">
-                            Ver mais
-                        </Link>
-                    </div>
-                    <div className="grid grid-cols-1 md:grid-cols-2 lg:grid-cols-3 gap-y-10 gap-x-6 items-start p-8">
-                        {events.content?.map(event => (
-                            <div key={event.eventId} className="relative flex flex-col sm:flex-row xl:flex-col items-start ">
+                <div className="flex justify-between p-4 sm:text-lg md:text-xl">
+                    <h1>Eventos recentes</h1>
+                    <Link to={"/eventos"} className="text-blue-600 hover:text-blue-400 hover:underline">
+                        Ver mais
+                    </Link>
+                </div>
+                <div className="grid grid-cols-1 md:grid-cols-2 lg:grid-cols-3 gap-y-10 gap-x-6 items-start p-8">
+                    {eventMock.map(event => {
+                        eventMock.length = 9
+                        return (
+                            <div key={event.id} className="relative flex flex-col sm:flex-row xl:flex-col items-start ">
                                 <EventCard event={event} />
                             </div>
-                        ))}
-                    </div>
+                        )
+                    })}
                 </div>
-            }
+            </div>
         </>
     );
 }
