@@ -520,4 +520,6 @@ export const eventMock = [
     }
 ]
 
-
+export const userMock = [
+    {"id":32,"username":"Admin","email":"admin@admin.com","password":"$2a$10$MObqfFlffx6/mdOfX.UUbO.XgNuzczr/4VXnjckReOR/yVHoJ7z0K","userImage":"https://cdn1.iconfinder.com/data/icons/user-112/24/setting_account_admin_role_setup_system_settings_user_profile_people_options-512.png","userCoverImage":"https://wallpapercave.com/wp/wp4009383.jpg","userBio":"Tenho 24 anos, sou formado em Análise e Desenvolvimento de Sistemas (ADS) e especializado em desenvolvimento web backend. Busco aprimorar cada vez mais os meus conhecimentos em novas tecnologias e ideias inovadoras afim de beneficiar o progresso da minha cidade natal. Sempre morei em Caxias, Maranhão, Após concluir seu curso superior em ADS, ele decidiu focar sua carreira no desenvolvimento web backend com Java Spring, assim como também melhorei minhas habilidades em frontend com Typescript e ReactJS, esta poderosa Stack de ferramentas e tecnologias me permitiu encontrar caminhos fantásticos par aum desenvolvimento criativo e inovador. Eu acredito que a tecnologia pode ser uma força incomensurável para a evolução e o bem social. É válido notar que inclusão digital pode ser um caminho mais benéfico e eficiente na integração local. Portanto, busco colaborar com grupos e organizações para implementar soluções tecnológicas que atendam às necessidades específicas de Caxias.\n\n","userLocation":"João Viana","createdDate":"27/01/2025"},
+]

@@ -1,29 +1,23 @@
 import { ProjectCard } from "components/cards/ProjectCard";
-import { Pagination, SearchBar } from "components/shared/Pagination";
-import { ProjectPage } from "resources/project";
-import { useEffect, useState } from "react";
-import { ProjectMockList } from "mock/MockList";
+import { SearchBar } from "components/shared/Pagination";
+import { useState } from "react";
 import { removeAccents } from "components/shared/Template";
-import axios from "axios";
-import { baseUrl } from "utils/requests";
 import { FaFolderClosed, FaHouse } from "react-icons/fa6";
 import { Breadcrumb } from "flowbite-react";
 import { Link } from "react-router-dom";
+import { projectMock } from "mock/MockData";
 
 export default function Projects() {
     const [query, setQuery] = useState("");
-    const [pageNumber, setPageNumber] = useState(0);
-    const handlePageChange = (newPageNumber: number) => {
-        setPageNumber(newPageNumber);
-    }
-    const [projectPage, setProjectPage] = useState<ProjectPage>({ content: [], page: { number: 0, totalElements: 0 } });
 
-    useEffect(() => {
-        axios.get(`${baseUrl}/projects?page=${pageNumber}&size=10&sort=id`)
-            .then((response) => {
-                setProjectPage(response.data);
-            });
-    }, [query, pageNumber]);
+    const filter = () => {
+        return projectMock.filter(project =>
+            project.projectTitle.toUpperCase().includes(query.toLocaleUpperCase()) ||
+            removeAccents(project.projectTitle).toUpperCase().includes(query.toLocaleUpperCase())
+        ).sort((project) => project.id);
+    };
+
+    const projects = filter();
 
     return (
         <div className="mt-10">
@@ -41,7 +35,6 @@ export default function Projects() {
                 </Breadcrumb.Item>
             </Breadcrumb>
 
-            {!projectPage.content.length ? <ProjectMockList /> :
                 <div>
                     <SearchBar
                         pageIcon={<FaFolderClosed />}
@@ -49,19 +42,14 @@ export default function Projects() {
                         value={query}
                         onChange={(e) => setQuery(e.target.value)}
                     />
-                    <Pagination pagination={projectPage} onPageChange={handlePageChange} />
                     <div className="grid grid-cols-1 xl:grid-cols-2 gap-y-10 gap-x-6 items-start p-8">
-                        {projectPage.content?.filter((project) =>
-                            project.projectTitle?.toUpperCase().includes(query.toLocaleUpperCase()) ||
-                            removeAccents(project.projectTitle)?.toUpperCase().includes(query.toLocaleUpperCase())
-                        ).map(project => (
+                        {projects.map(project => (
                             <div key={project.id} className="relative flex flex-col sm:flex-row xl:flex-col items-start ">
                                 <ProjectCard project={project} />
                             </div>
                         ))}
                     </div>
                 </div>
-            }
         </div>
     );
 }
