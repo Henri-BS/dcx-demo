@@ -26,10 +26,13 @@ export type ProjectProps = {
 export type ProjectCategory = {
   id?: number;
   categoryName?: string;
+  projectId?: number;
   projectTitle?: string;
   projectDescription?: string;
   projectImage?: string;
   projectDetails?: string;
   userId?: number;
+  username?: string;
+  userImage?: string;
 };
 

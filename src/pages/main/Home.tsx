@@ -31,6 +31,11 @@ export const customTheme: CustomFlowbiteTheme = {
 
 export default function Home() {
 
+const posts =  postMock.sort(x => x.postId) ;
+const projects =  projectMock.sort(x => x.id) ;
+const categories =  categoryMock.sort(x => x.id) ;
+const events =  eventMock.sort(x => x.eventId) ;
+
     return (
         <>
             <div className="mt-10">
@@ -85,8 +90,8 @@ export default function Home() {
                         <div className="h-96 max-w-[600px] w-full">
                             <Flowbite theme={{ theme: customTheme }}>
                                 <Carousel>
-                                    {postMock.map(post => {
-                                        postMock.length = 6
+                                    {posts.map(post => {
+                                        posts.length = 6
                                         return (
                                             <div key={post.postId} className="flex justify-center items-center w-full">
                                                 <CarouselPostCard post={post} />
@@ -99,8 +104,8 @@ export default function Home() {
 
                         <div className="mt-4 p-4">
                             <div className="divide-y divide-gray-300">
-                                {postMock.map(post => {
-                                    postMock.length = 6
+                                {posts.map(post => {
+                                    posts.length = 6
                                     return (
                                         <div key={post.postId}>
                                             <PostSmCard post={post} />
@@ -119,8 +124,8 @@ export default function Home() {
                     </Link>
                 </div>
                 <div className="grid grid-cols-1 lg:grid-cols-2 gap-y-10 gap-x-6 items-start p-8">
-                    {projectMock.map(project => {
-                        projectMock.length = 8
+                    {projects.map(project => {
+                        projects.length = 8
                         return (
                             <div key={project.id} className="relative flex flex-col sm:flex-row xl:flex-col items-start ">
                                 <ProjectCard project={project} />
@@ -136,8 +141,8 @@ export default function Home() {
                     </Link>
                 </div>
                 <div className="grid grid-cols-2 md:grid-cols-4 lg:grid-cols-6 gap-y-6 gap-x-4 items-start p-8">
-                    {categoryMock.map(category => {
-                        categoryMock.length = 12
+                    {categories.map(category => {
+                        categories.length = 12
                         return (
                             <div key={category.id} >
                                 <CategoryCard category={category} />
@@ -153,10 +158,10 @@ export default function Home() {
                     </Link>
                 </div>
                 <div className="grid grid-cols-1 md:grid-cols-2 lg:grid-cols-3 gap-y-10 gap-x-6 items-start p-8">
-                    {eventMock.map(event => {
-                        eventMock.length = 9
+                    {events.map(event => {
+                        events.length = 9
                         return (
-                            <div key={event.id} className="relative flex flex-col sm:flex-row xl:flex-col items-start ">
+                            <div key={event.eventId} className="relative flex flex-col sm:flex-row xl:flex-col items-start ">
                                 <EventCard event={event} />
                             </div>
                         )

@@ -35,7 +35,7 @@ export function CategoryMockProfile({ params: categoryName }: Props) {
 export function EventMockProfile({ params: eventId }: Props) {
 
     const filterById = (id: any) => {
-        return eventMock.filter(item => item.id.toString() === id);
+        return eventMock.filter(item => item.eventId.toString() === id);
     };
 
     const result = filterById(eventId);
@@ -44,7 +44,7 @@ export function EventMockProfile({ params: eventId }: Props) {
         <>
             {result.map(event => {
                 return (
-                    <div key={event.id} className="mt-10">
+                    <div key={event.eventId} className="mt-10">
                         <div className="relative flex flex-col sm:flex-row xl:flex-col items-start">
                             <div className="order-1 sm:ml-6 xl:ml-0">
                                 <h3 className="mb-1 text-slate-900 font-semibold">
@@ -52,7 +52,6 @@ export function EventMockProfile({ params: eventId }: Props) {
                                 </h3>
                                 <div>
                                     <p className="flex gap-2 items-center text-center text-lg font-semibold text-gray-700">
-                                        <FaIcons.FaFolderClosed /> Projeto: {event?.projectTitle}
                                     </p>
                                     <p className="flex gap-2 items-center text-center text-lg font-semibold text-gray-700">
                                         <GoIcons.GoCalendar /> Data do evento: {moment(event?.eventDate).format("DD/MM/yyyy")}

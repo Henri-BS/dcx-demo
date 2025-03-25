@@ -12,7 +12,6 @@ import * as FaIcons from "react-icons/fa6";
 import * as GoIcons from "react-icons/go";
 import { Link, useNavigate, useParams } from "react-router-dom";
 import { Props } from "resources";
-import { useAuth } from "resources/auth";
 import { Event } from "resources/event";
 import { Post } from "resources/post";
 import { UserPage } from "resources/user";
@@ -36,7 +35,6 @@ export function EventDetails({ params: eventId }: Props) {
     const handlePageChange = (newPageNumber: number) => {
         setPageNumber(newPageNumber);
     }
-    const auth = useAuth();
     const params = useParams();
     const [edit, setEdit] = useState<boolean>(false);
     const [deleteModal, setDeleteModal] = useState(false);
@@ -90,7 +88,6 @@ export function EventDetails({ params: eventId }: Props) {
                     </Breadcrumb.Item>
                 </Breadcrumb>
 
-                {event?.userId === auth.getUserSession()?.id ?
                     <Dropdown label="Configurações" inline>
                         <Dropdown.Item icon={FaIcons.FaSquarePen} onClick={() => setEdit(true)} className="text-md font-medium">
                             Editar
@@ -99,8 +96,6 @@ export function EventDetails({ params: eventId }: Props) {
                             Deletar
                         </Dropdown.Item>
                     </Dropdown>
-                    : ""
-                }
                 <Modal show={deleteModal} size="md" onClose={() => setDeleteModal(false)} popup>
                     <Modal.Header />
                     <Modal.Body>

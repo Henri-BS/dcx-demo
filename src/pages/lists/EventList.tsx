@@ -47,7 +47,7 @@ export default function Events() {
                 />
                 <div className="grid grid-cols-1 md:grid-cols-2 lg:grid-cols-3 gap-y-6 gap-x-4 items-start p-8">
                     {events.map(event => (
-                        <div key={event.id} className="relative flex flex-col sm:flex-row xl:flex-col items-start ">
+                        <div key={event.eventId} className="relative flex flex-col sm:flex-row xl:flex-col items-start ">
                             <EventCard event={event} />
                         </div>
                     ))}

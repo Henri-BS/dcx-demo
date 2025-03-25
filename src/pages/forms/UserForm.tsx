@@ -1,14 +1,11 @@
 
 import { useFormik } from "formik";
-import { useEffect, useState } from "react";
+import { useState } from "react";
 import { Button, Label, Textarea, TextInput } from "flowbite-react";
 import { useAuth } from "resources/auth";
-import { Credentials, AccessToken, User } from "resources/user";
 import { useNavigate, useParams } from "react-router-dom";
 import { useNotification, FieldError } from "components/shared/Notification";
 import * as Yup from "yup";
-import axios from "axios";
-import { baseUrl } from "utils/requests";
 import { FaUser, FaX } from "react-icons/fa6";
 import { Props } from "resources";
 
@@ -53,39 +50,24 @@ const userValidationSchema = Yup.object().shape({
 export function Login() {
     const [newUserState, setNewUserState] = useState<boolean>(false);
 
-
-    const auth = useAuth();
     const notification = useNotification();
     const navigate = useNavigate();
 
-    const { values, handleChange, handleSubmit, errors, resetForm } = useFormik<UserFormProps>({
+    const { values, handleChange, errors, resetForm } = useFormik<UserFormProps>({
         initialValues: userFormSchema,
         validationSchema: userValidationSchema,
         onSubmit: onSubmit
     });
 
-    async function onSubmit(values: UserFormProps) {
+    async function onSubmit() {
         if (!newUserState) {
-            const credentials: Credentials = { email: values.email, password: values.password }
-            try {
-                const accessToken: AccessToken = await auth.authenticate(credentials);
-                auth.initSession(accessToken);
-                navigate(0);
-            } catch (error: any) {
-                const message = error?.message;
-                notification.notify(message, "error");
-            }
+            notification.notify("Usuário logado!", "success");
+            navigate(0);
+
         } else {
-            const user: User = { email: values.email, username: values.username, password: values.password }
-            try {
-                await auth.saveUser(user);
-                notification.notify("Usuário cadastrado!", "success");
-                resetForm();
-                setNewUserState(false);
-            } catch (error: any) {
-                const message = error?.message;
-                notification.notify(message, "error");
-            }
+            notification.notify("Usuário cadastrado!", "success");
+            resetForm();
+            setNewUserState(false);
         }
     }
     return (
@@ -96,7 +78,7 @@ export function Login() {
                     <FaX onClick={() => navigate(-1)} className="hover:shadow-xl cursor-pointer rounded-full  p-1 border hover:bg-gray-300  text-2xl" />
                 </div>
 
-                <form onSubmit={handleSubmit} className="space-y-2 w-2/3" >
+                <form onSubmit={onSubmit} className="space-y-2 w-2/3" >
                     {newUserState ?
                         <div>
                             <Label className="block text-sm font-medium leading-6 text-gray-900" value="Nome de Usuário:" />
@@ -185,22 +167,15 @@ export function UserEditForm({ params: userId }: Props) {
     userId = auth.getUserSession()?.id;
     const navigate = useNavigate();
 
-    const [user, setUser] = useState<User>();
-    useEffect(() => {
-        axios.get(`${baseUrl}/users/${userId}`)
-            .then((response) => {
-                setUser(response.data);
-            });
-    }, [userId]);
 
     const { values, handleChange, resetForm } = useFormik<UserFormProps>({
         initialValues: {
             id: userId,
-            username: user?.username,
-            userBio: user?.userBio,
-            userImage: user?.userImage,
-            userCoverImage: user?.userCoverImage,
-            userLocation: user?.userLocation
+            username: "",
+            userBio: "",
+            userImage: "",
+            userCoverImage: "",
+            userLocation: ""
         },
         validationSchema: userValidationSchema,
         onSubmit: onSubmit
@@ -208,26 +183,9 @@ export function UserEditForm({ params: userId }: Props) {
     );
 
     async function onSubmit() {
-        const userValues: User = {
-            id: userId,
-            username: values.username ?? user?.username,
-            userBio: values.userBio ?? user?.userBio,
-            userImage: values.userImage ?? user?.userImage,
-            userCoverImage: values.userCoverImage ?? user?.userCoverImage,
-            userLocation: values.userLocation ?? user?.userLocation
-        }
-        try {
-            axios.put(`${baseUrl}/users/update`, userValues)
-                .then((response) => {
-                    navigate(`/usuarios/${userId}`);
-                    return response.status;
-                });
             notification.notify("Salvo com sucesso!", "success");
             resetForm();
-        } catch (error: any) {
-            const message = error?.message;
-            notification.notify(message, "error");
-        }
+            navigate(0);
     }
 
 
@@ -235,7 +193,7 @@ export function UserEditForm({ params: userId }: Props) {
         <>
             <div className="flex flex-col items-center justify-center mt-10">
                 <div className="flex flex-row justify-between items-center text-xl font-semibold tracking-tight text-gray-700 mb-3 w-2/3">
-                    <span className="flex flex-row items-center gap-2"><FaUser /> Editar Usuário ({user?.username})</span>
+                    <span className="flex flex-row items-center gap-2"><FaUser /> Editar Usuário </span>
                     <FaX onClick={() => navigate(-1)} className="hover:shadow-xl cursor-pointer rounded-full  p-1 border hover:bg-gray-300  text-2xl" />
                 </div>
                 <form onSubmit={onSubmit} className="space-y-2 w-2/3 ">
@@ -265,7 +223,6 @@ export function UserEditForm({ params: userId }: Props) {
                             id="userBio"
                             onChange={handleChange}
                             value={values.userBio}
-                            defaultValue={user?.userBio}
                         />
                     </div>
                     <div>

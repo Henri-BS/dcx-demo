@@ -17,6 +17,8 @@ import { ProjectCategoryAddForm, ProjectEditForm } from "pages/forms/ProjectForm
 import moment from "moment";
 import { EventSmCard } from "components/cards/EventCard";
 import { CustomMarkdown } from "components/shared/Template";
+import { categoryMock, eventMock, projectMock } from "mock/MockData";
+import { CategoryCard } from "components/cards/CategoryCard";
 
 export function ProjectProfile() {
     const params = useParams();
@@ -37,28 +39,23 @@ export function ProjectProfile() {
         const handlePageChange = (newPageNumber: number) => {
             setPageNumber(newPageNumber)
         }
-        const [project, setProject] = useState<Project>();
-        const [eventPage, setEventPage] = useState<EventPage>({ content: [], page: { number: 0, totalElements: 0 } });
-        const [categories, setCategories] = useState<ProjectCategory[]>();
+
+        const filterById = (id: any) => {
+            return projectMock.filter(x => x.id.toString() === id);
+        }
+
+        const projectById = filterById(projectId);
+
+        const filterEvents = (id: any) => {
+            return eventMock.filter(x => x.projectId?.toString() === id);
+        }
+        const eventByProject = filterEvents(projectId);
+
         const [posts, setPosts] = useState<Post[]>();
 
 
-        useEffect(() => {
-            axios.get(`${baseUrl}/projects/${projectId}`)
-                .then((response) => {
-                    setProject(response.data);
-                });
-        }, [projectId]);
 
         useEffect(() => {
-            axios.get(`${baseUrl}/events/by-project/${projectId}?page=${pageNumber}&size=8`)
-                .then((response) => {
-                    setEventPage(response.data);
-                });
-            axios.get(`${baseUrl}/project-category?projectId=${projectId}`)
-                .then((response) => {
-                    setCategories(response.data);
-                });
             axios.get(`${baseUrl}/event-post?projectId=${projectId}&page=${pageNumber}&size=9`)
                 .then((response) => {
                     setPosts(response.data);
@@ -70,13 +67,6 @@ export function ProjectProfile() {
             axios.delete(`${baseUrl}/projects/delete/${projectId}`)
                 .then((response) => {
                     navigate("/projetos");
-                    return response.status;
-                })
-        }
-
-        const deleteProjectCategory = (id: any) => {
-            axios.delete(`${baseUrl}/project-category/delete/${id}`)
-                .then((response) => {
                     return response.status;
                 })
         }
@@ -106,20 +96,18 @@ export function ProjectProfile() {
                         </Breadcrumb.Item>
                     </Breadcrumb>
 
-                    {project?.userId === auth.getUserSession()?.id ?
-                        <Dropdown label="Configurações" inline>
-                            <Dropdown.Item icon={FaIcons.FaSquarePen} onClick={() => setEdit(true)} className="text-md font-medium">
-                                Editar Projeto
-                            </Dropdown.Item>
-                            <Dropdown.Item icon={FaIcons.FaTag} onClick={() => setAddCategory(true)} className="text-md font-medium">
-                                Adicionar Categoria
-                            </Dropdown.Item>
-                            <Dropdown.Item icon={FaIcons.FaTrash} onClick={() => setDeleteModal(true)} className="text-md font-medium">
-                                Deletar Projeto
-                            </Dropdown.Item>
-                        </Dropdown>
-                        : ""
-                    }
+                    <Dropdown label="Configurações" inline>
+                        <Dropdown.Item icon={FaIcons.FaSquarePen} onClick={() => setEdit(true)} className="text-md font-medium">
+                            Editar Projeto
+                        </Dropdown.Item>
+                        <Dropdown.Item icon={FaIcons.FaTag} onClick={() => setAddCategory(true)} className="text-md font-medium">
+                            Adicionar Categoria
+                        </Dropdown.Item>
+                        <Dropdown.Item icon={FaIcons.FaTrash} onClick={() => setDeleteModal(true)} className="text-md font-medium">
+                            Deletar Projeto
+                        </Dropdown.Item>
+                    </Dropdown>
+
 
                     <Modal show={deleteModal} size="md" onClose={() => setDeleteModal(false)} popup>
                         <Modal.Header />
@@ -149,111 +137,107 @@ export function ProjectProfile() {
                     </Modal>
 
                 </div>
-                {!project ? <ProjectMockProfile params={`${params.projectId}`} /> :
+                {edit ? <ProjectEditForm params={projectId} /> :
                     <div>
-                        {edit ? <ProjectEditForm params={projectId} /> :
-                            <div>
-                                <div className="relative flex flex-col sm:flex-row xl:flex-col items-start md:shadow-md">
-                                    <div className="order-1 sm:ml-6 xl:ml-0">
-                                        <h1 className="mb-1 block text-3xl font-semibold leading-6 text-cyan-600">{project?.projectTitle}</h1>
-                                        <div className="prose prose-slate prose-sm text-lg text-slate-700 mt-5">
-                                            <p className="flex flex-row items-center gap-2"><FaIcons.FaTag /> Categorias relacionadas: <b>{categories?.length}</b></p>
-                                            <p className="flex flex-row items-center gap-2"><FaIcons.FaCalendarCheck /> Eventos relacionados: <b>{eventPage.page.totalElements}</b></p>
-                                            <p className="flex flex-row items-center gap-2"><FaIcons.FaNewspaper /> Postagens relacionadas: <b>{postsByProject?.length}</b></p>
-                                        </div>
-                                    </div>
-                                    <img src={project?.projectImage ? project.projectImage : require("assets/img/image.png")} className="mb-6 shadow-md rounded-lg bg-slate-50 w-[22rem] sm:mb-0" alt={project.projectTitle} />
-                                </div>
-
-                                <Accordion collapseAll className="my-6 ">
-                                    <Accordion.Panel>
-                                        <Accordion.Title>
-                                            <h2 className="flex flex-row items-center gap-2 text-xl text-slate-800 "><FaIcons.FaCircleInfo />Informações Gerais</h2>
-                                        </Accordion.Title>
-                                        <Accordion.Content className="p-2">
-                                            <p className="mt-5 text-md text-slate-700 md:px-10">
-                                                <CustomMarkdown item={project?.projectDetails} />
-                                            </p>
-                                        </Accordion.Content>
-                                    </Accordion.Panel>
-                                    <Accordion.Panel>
-                                        <Accordion.Title>
-                                            <h2 className="flex flex-row items-center gap-2 text-xl text-slate-800 "><FaIcons.FaRectangleList />Descrição</h2>
-                                        </Accordion.Title>
-                                        <Accordion.Content>
-                                            <p className="mt-5 text-xl text-slate-700 md:px-10">
-                                                <CustomMarkdown item={project.projectDescription} />
-                                            </p>
-                                        </Accordion.Content>
-                                    </Accordion.Panel>
-                                </Accordion>
-
-
-                                <Tabs className="p-1 text-slate-600 rounded-md overflow-x-scroll" variant="fullWidth">
-                                    <Tabs.Item active title="Eventos" icon={FaIcons.FaCalendarCheck}>
-                                        <Pagination pagination={eventPage} onPageChange={handlePageChange} />
-                                        <Timeline className="mt-5 mx-6">
-                                            {eventPage.content?.map(event => {
-                                                return (
-                                                    <>
-                                                        <Timeline.Item>
-                                                            <Timeline.Point icon={FaIcons.FaCalendarWeek} />
-                                                            <Timeline.Content>
-                                                                <Timeline.Time>{moment(event.eventDate).format("DD/MM/yyyy")}</Timeline.Time>
-                                                                <Timeline.Body>
-                                                                    <EventSmCard event={event} />
-                                                                </Timeline.Body>
-                                                            </Timeline.Content>
-                                                        </Timeline.Item >
-                                                    </>
-                                                )
-                                            })}
-                                        </Timeline>
-                                    </Tabs.Item>
-
-                                    <Tabs.Item title="Categorias" icon={FaIcons.FaTag}>
-                                        <div className="grid grid-cols-2 md:grid-cols-4 lg:grid-cols-6 gap-y-10 gap-x-4 items-start p-4">
-                                            {categories?.map(category => (
-                                                <div key={category.id} className="flex flex-row items-center py-4 bg-zinc-100 border border-zinc-400 rounded-lg shadow-md transition duration-700 hover:shadow-xl hover:scale-105">
-                                                    <Link to={`/categorias/${category.categoryName}`} className="w-full text-center">
-                                                        <h5 title={category.categoryName} className="h-8 text-lg font-semibold tracking-tight text-gray-900 overflow-hidden">{category.categoryName}</h5>
-                                                    </Link>
-                                                    {project?.userId === auth.getUserSession()?.id ?
-                                                        <div title="Deletar" className="border-l-2 border-zinc-300 px-2">
-                                                            <FaIcons.FaTrash className="cursor-pointer" onClick={() => deleteProjectCategory(category.id)} />
-                                                        </div>
-                                                        : ""
-                                                    }
-                                                </div>
-                                            ))}
-                                        </div>
-                                    </Tabs.Item>
-
-                                    <Tabs.Item active title="Postagens" icon={FaIcons.FaNewspaper}>
-                                        <div className="mt-10 grid grid-cols-1 divide-y gap-x-8 ">
-                                            {postsByProject?.map(post => (
-                                                <PostSmCard post={post} />
-                                            ))}
-                                        </div>
-                                    </Tabs.Item>
-
-                                    <Tabs.Item active title="Galeria" icon={FaIcons.FaImage}>
-                                        <p className="mb-1 py-10 text-center block font-semibold text-3xl leading-6 text-slate-600">Em Desenvolvimento</p>
-                                    </Tabs.Item>
-
-                                    <Tabs.Item active title="Organização" icon={FaIcons.FaUserGroup}>
-                                        <h2 className="text-xl font-semibold">Autor:</h2>
-                                        <div className="flex items-center space-x-4 rtl:space-x-reverse py-1 sm:py-2 border-2 border-zinc-300 rounded-md">
-                                            <img src={project.userImage ? project.userImage : require("assets/img/user_profile.png")} alt="usuário" className="h-20 min-w-20 rounded-full" />
-                                            <div title={project.username} className="inline-flex font-semibold text-gray-900 h-12 overflow-hidden">
-                                                {project.username}
+                        {projectById.map(project => {
+                            return (
+                                <div>
+                                    <div className="relative flex flex-col sm:flex-row xl:flex-col items-start md:shadow-md">
+                                        <div className="order-1 sm:ml-6 xl:ml-0">
+                                            <h1 className="mb-1 block text-3xl font-semibold leading-6 text-cyan-600">{project?.projectTitle}</h1>
+                                            <div className="prose prose-slate prose-sm text-lg text-slate-700 mt-5">
+                                                <p className="flex flex-row items-center gap-2"><FaIcons.FaTag /> Categorias relacionadas: <b>{projectById?.map(x => x.category?.length)}</b></p>
+                                                <p className="flex flex-row items-center gap-2"><FaIcons.FaCalendarCheck /> Eventos relacionados: <b>{eventByProject.length}</b></p>
+                                                <p className="flex flex-row items-center gap-2"><FaIcons.FaNewspaper /> Postagens relacionadas: <b>{postsByProject?.length}</b></p>
                                             </div>
                                         </div>
-                                        <p className="mb-1 py-10 text-center block font-semibold text-3xl leading-6 text-slate-600">Em Desenvolvimento</p>
-                                    </Tabs.Item>
-                                </Tabs>
-                            </div>
-                        }
+                                        <img src={project?.projectImage ? project.projectImage : require("assets/img/image.png")} className="mb-6 shadow-md rounded-lg bg-slate-50 w-[22rem] sm:mb-0" alt={project.projectTitle} />
+                                    </div>
+                                    <Accordion collapseAll className="my-6 ">
+                                        <Accordion.Panel>
+                                            <Accordion.Title>
+                                                <h2 className="flex flex-row items-center gap-2 text-xl text-slate-800 "><FaIcons.FaCircleInfo />Informações Gerais</h2>
+                                            </Accordion.Title>
+                                            <Accordion.Content className="p-2">
+                                                <p className="mt-5 text-md text-slate-700 md:px-10">
+                                                    <CustomMarkdown item={project?.projectDetails} />
+                                                </p>
+                                            </Accordion.Content>
+                                        </Accordion.Panel>
+                                        <Accordion.Panel>
+                                            <Accordion.Title>
+                                                <h2 className="flex flex-row items-center gap-2 text-xl text-slate-800 "><FaIcons.FaRectangleList />Descrição</h2>
+                                            </Accordion.Title>
+                                            <Accordion.Content>
+                                                <p className="mt-5 text-xl text-slate-700 md:px-10">
+                                                    <CustomMarkdown item={project?.projectDescription} />
+                                                </p>
+                                            </Accordion.Content>
+                                        </Accordion.Panel>
+                                    </Accordion>
+
+                                    <Tabs className="p-1 text-slate-600 rounded-md overflow-x-scroll" variant="fullWidth">
+                                        <Tabs.Item active title="Eventos" icon={FaIcons.FaCalendarCheck}>
+                                            {eventByProject.length === null ? "Nenhum evento encontrado!" :
+                                                <Timeline className="mt-5 mx-6">
+                                                    {eventByProject.map(event => {
+                                                        return (
+                                                            <>
+                                                                <Timeline.Item>
+                                                                    <Timeline.Point icon={FaIcons.FaCalendarWeek} />
+                                                                    <Timeline.Content>
+                                                                        <Timeline.Time>{moment(event.eventDate).format("DD/MM/yyyy")}</Timeline.Time>
+                                                                        <Timeline.Body>
+                                                                            <EventSmCard event={event} />
+                                                                        </Timeline.Body>
+                                                                    </Timeline.Content>
+                                                                </Timeline.Item >
+                                                            </>
+                                                        )
+                                                    })}
+                                                </Timeline>
+                                            }
+                                        </Tabs.Item>
+
+                                        <Tabs.Item title="Categorias" icon={FaIcons.FaTag}>
+                                            {projectById.map(x => x.category?.length === null) ? "Nenhuma categoria encontrada!" :
+                                                <div className="grid grid-cols-2 md:grid-cols-4 lg:grid-cols-6 gap-y-10 gap-x-4 items-start p-4">
+                                                    {projectById?.map(project => (
+                                                        project.category?.map(x => {
+                                                            return (
+                                                                <CategoryCard category={x} />
+                                                            )
+                                                        })
+                                                    ))}
+                                                </div>}
+                                        </Tabs.Item>
+
+                                        <Tabs.Item active title="Postagens" icon={FaIcons.FaNewspaper}>
+                                            <div className="mt-10 grid grid-cols-1 divide-y gap-x-8 ">
+                                                {postsByProject?.map(post => (
+                                                    <PostSmCard post={post} />
+                                                ))}
+                                            </div>
+                                        </Tabs.Item>
+
+                                        <Tabs.Item active title="Galeria" icon={FaIcons.FaImage}>
+                                            <p className="mb-1 py-10 text-center block font-semibold text-3xl leading-6 text-slate-600">Em Desenvolvimento</p>
+                                        </Tabs.Item>
+
+                                        <Tabs.Item active title="Organização" icon={FaIcons.FaUserGroup}>
+                                            <h2 className="text-xl font-semibold">Autor:</h2>
+                                            <div className="flex items-center space-x-4 rtl:space-x-reverse py-1 sm:py-2 border-2 border-zinc-300 rounded-md">
+                                                <img src={project?.userImage ? project.userImage : require("assets/img/user_profile.png")} alt="usuário" className="h-20 min-w-20 rounded-full" />
+                                                <div title={project?.username} className="inline-flex font-semibold text-gray-900 h-12 overflow-hidden">
+                                                    {project?.username}
+                                                </div>
+                                            </div>
+                                            <p className="mb-1 py-10 text-center block font-semibold text-3xl leading-6 text-slate-600">Em Desenvolvimento</p>
+                                        </Tabs.Item>
+                                    </Tabs>
+                                </div>
+                            )
+                        })}
                     </div>
                 }
             </div>

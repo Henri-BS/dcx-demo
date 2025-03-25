@@ -35,21 +35,23 @@ export default function Projects() {
                 </Breadcrumb.Item>
             </Breadcrumb>
 
-                <div>
-                    <SearchBar
-                        pageIcon={<FaFolderClosed />}
-                        pageTitle="Projetos"
-                        value={query}
-                        onChange={(e) => setQuery(e.target.value)}
-                    />
-                    <div className="grid grid-cols-1 xl:grid-cols-2 gap-y-10 gap-x-6 items-start p-8">
-                        {projects.map(project => (
+            <div>
+                <SearchBar
+                    pageIcon={<FaFolderClosed />}
+                    pageTitle="Projetos"
+                    value={query}
+                    onChange={(e) => setQuery(e.target.value)}
+                />
+                <div className="grid grid-cols-1 xl:grid-cols-2 gap-y-10 gap-x-6 items-start p-8">
+                    {projects.map(project => {
+                        return (
                             <div key={project.id} className="relative flex flex-col sm:flex-row xl:flex-col items-start ">
                                 <ProjectCard project={project} />
                             </div>
-                        ))}
-                    </div>
+                        )
+                    })}
                 </div>
+            </div>
         </div>
     );
 }

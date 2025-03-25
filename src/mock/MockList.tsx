@@ -129,7 +129,7 @@ export function EventMockList() {
             <hr />
             <div className="grid grid-cols-1 md:grid-cols-2 lg:grid-cols-3 gap-y-10 gap-x-6 items-start p-8">
                 {result.map(event => (
-                    <div key={event.id} className="relative flex flex-col sm:flex-row xl:flex-col items-start ">
+                    <div key={event.eventId} className="relative flex flex-col sm:flex-row xl:flex-col items-start ">
                         <EventCard event={event} />
                     </div>
                 ))}
@@ -224,7 +224,7 @@ export function HomeMock() {
                 {eventMock.map(event => {
                     eventMock.length = 9
                     return (
-                        <div key={event.id} className="relative flex flex-col sm:flex-row xl:flex-col items-start ">
+                        <div key={event.eventId} className="relative flex flex-col sm:flex-row xl:flex-col items-start ">
                             <EventCard event={event} />
                         </div>
                     )
