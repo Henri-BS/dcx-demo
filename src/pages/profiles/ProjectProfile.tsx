@@ -17,8 +17,9 @@ import { ProjectCategoryAddForm, ProjectEditForm } from "pages/forms/ProjectForm
 import moment from "moment";
 import { EventSmCard } from "components/cards/EventCard";
 import { CustomMarkdown } from "components/shared/Template";
-import { categoryMock, eventMock, projectMock } from "mock/MockData";
+import { categoryMock, eventMock, eventPostMock, projectMock } from "mock/MockData";
 import { CategoryCard } from "components/cards/CategoryCard";
+import { useNotification } from "components/shared/Notification";
 
 export function ProjectProfile() {
     const params = useParams();
@@ -30,53 +31,27 @@ export function ProjectProfile() {
 
     function ProjectDetails({ params: projectId }: Props) {
         const auth = useAuth();
+        const notification = useNotification();
         const [edit, setEdit] = useState(false);
         const [addCategory, setAddCategory] = useState(false);
         const [deleteModal, setDeleteModal] = useState(false);
         const navigate = useNavigate();
-        const params = useParams();
-        const [pageNumber, setPageNumber] = useState(0);
-        const handlePageChange = (newPageNumber: number) => {
-            setPageNumber(newPageNumber)
-        }
 
-        const filterById = (id: any) => {
-            return projectMock.filter(x => x.id.toString() === id);
-        }
+const deleteProject = () => {
+    setDeleteModal(false)
+    navigate("/projetos")
+    notification.notify("Deletado com sucesso!", "success");
+}
 
-        const projectById = filterById(projectId);
+        const projectById = projectMock.filter(x => x.id.toString() === projectId);
+        const eventByProject = eventMock.filter(x => x.projectId?.toString() === projectId);
 
-        const filterEvents = (id: any) => {
-            return eventMock.filter(x => x.projectId?.toString() === id);
-        }
-        const eventByProject = filterEvents(projectId);
-
-        const [posts, setPosts] = useState<Post[]>();
-
-
-
-        useEffect(() => {
-            axios.get(`${baseUrl}/event-post?projectId=${projectId}&page=${pageNumber}&size=9`)
-                .then((response) => {
-                    setPosts(response.data);
-                });
-        }, [projectId, pageNumber]);
-
-
-        const deleteProject = () => {
-            axios.delete(`${baseUrl}/projects/delete/${projectId}`)
-                .then((response) => {
-                    navigate("/projetos");
-                    return response.status;
-                })
-        }
-
-        const postsByProject = posts?.filter((post, index, self) => {
-            return self.map(p => p.postId).indexOf(post.postId) === index;
-        });
+        const posts = eventPostMock?.filter((post, index, self) => {
+            return post.projectId?.toString() === projectId && self.map(p => p.postId).indexOf(post.postId) === index;
+        })
 
         return (
-            <div className="mt-10">
+            <div>
                 <div className="flex flex-col md:flex-row justify-between  text-lg font-semibold text-gray-700">
                     <Breadcrumb aria-label="breadcrumb" className="mb-3 py-2">
                         <Breadcrumb.Item icon={FaIcons.FaHouse}>
@@ -118,8 +93,8 @@ export function ProjectProfile() {
                                     Deseja deletar este projeto?
                                 </h3>
                                 <div className="flex justify-center gap-4">
-                                    <Button color="failure" onClick={() => deleteProject()} >
-                                        <span onClick={() => setDeleteModal(false)}>{"Deletar"}</span>
+                                    <Button color="failure" onClick={() => deleteProject()}>
+                                        <span>{"Deletar"}</span>
                                     </Button>
                                     <Button color="gray" onClick={() => setDeleteModal(false)}>
                                         Cancelar
@@ -148,7 +123,7 @@ export function ProjectProfile() {
                                             <div className="prose prose-slate prose-sm text-lg text-slate-700 mt-5">
                                                 <p className="flex flex-row items-center gap-2"><FaIcons.FaTag /> Categorias relacionadas: <b>{projectById?.map(x => x.category?.length)}</b></p>
                                                 <p className="flex flex-row items-center gap-2"><FaIcons.FaCalendarCheck /> Eventos relacionados: <b>{eventByProject.length}</b></p>
-                                                <p className="flex flex-row items-center gap-2"><FaIcons.FaNewspaper /> Postagens relacionadas: <b>{postsByProject?.length}</b></p>
+                                                <p className="flex flex-row items-center gap-2"><FaIcons.FaNewspaper /> Postagens relacionadas: <b>{posts?.length}</b></p>
                                             </div>
                                         </div>
                                         <img src={project?.projectImage ? project.projectImage : require("assets/img/image.png")} className="mb-6 shadow-md rounded-lg bg-slate-50 w-[22rem] sm:mb-0" alt={project.projectTitle} />
@@ -200,7 +175,6 @@ export function ProjectProfile() {
                                         </Tabs.Item>
 
                                         <Tabs.Item title="Categorias" icon={FaIcons.FaTag}>
-                                            {projectById.map(x => x.category?.length === null) ? "Nenhuma categoria encontrada!" :
                                                 <div className="grid grid-cols-2 md:grid-cols-4 lg:grid-cols-6 gap-y-10 gap-x-4 items-start p-4">
                                                     {projectById?.map(project => (
                                                         project.category?.map(x => {
@@ -209,15 +183,17 @@ export function ProjectProfile() {
                                                             )
                                                         })
                                                     ))}
-                                                </div>}
+                                                </div>
                                         </Tabs.Item>
 
                                         <Tabs.Item active title="Postagens" icon={FaIcons.FaNewspaper}>
-                                            <div className="mt-10 grid grid-cols-1 divide-y gap-x-8 ">
-                                                {postsByProject?.map(post => (
-                                                    <PostSmCard post={post} />
-                                                ))}
-                                            </div>
+                                            {posts.length === null ? "Nenhuma postagem encontrado!" :
+                                                <div className="mt-10 grid grid-cols-1 divide-y gap-x-8 ">
+                                                    {posts?.map(post =>
+                                                        <PostSmCard post={post} />
+                                                    )}
+                                                </div>
+                                            }
                                         </Tabs.Item>
 
                                         <Tabs.Item active title="Galeria" icon={FaIcons.FaImage}>

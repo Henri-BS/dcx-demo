@@ -71,83 +71,81 @@ export function Login() {
         }
     }
     return (
-        <div className="mt-10">
-            <div className="flex flex-col items-center justify-center py-[100px]">
-                <div className="flex flex-row justify-between items-center text-xl font-semibold tracking-tight text-gray-700 mb-3 w-2/3">
-                    <span className="flex flex-row items-center gap-2">{newUserState ? "Cadastre-se" : "Faça login na sua conta"}</span>
-                    <FaX onClick={() => navigate(-1)} className="hover:shadow-xl cursor-pointer rounded-full  p-1 border hover:bg-gray-300  text-2xl" />
-                </div>
+        <div className="flex flex-col items-center justify-center py-[100px]">
+            <div className="flex flex-row justify-between items-center text-xl font-semibold tracking-tight text-gray-700 mb-3 w-2/3">
+                <span className="flex flex-row items-center gap-2">{newUserState ? "Cadastre-se" : "Faça login na sua conta"}</span>
+                <FaX onClick={() => navigate(-1)} className="hover:shadow-xl cursor-pointer rounded-full  p-1 border hover:bg-gray-300  text-2xl" />
+            </div>
 
-                <form onSubmit={onSubmit} className="space-y-2 w-2/3" >
-                    {newUserState ?
-                        <div>
-                            <Label className="block text-sm font-medium leading-6 text-gray-900" value="Nome de Usuário:" />
-                            <TextInput
-                                color="bg-zinc-400"
-                                id="username"
-                                value={values.username}
-                                onChange={handleChange} />
-                        </div>
-                        : ""
-                    }
+            <form onSubmit={onSubmit} className="space-y-2 w-2/3" >
+                {newUserState ?
                     <div>
-                        <Label className="block text-sm font-medium leading-6 text-gray-900" value="Email:" />
+                        <Label className="block text-sm font-medium leading-6 text-gray-900" value="Nome de Usuário:" />
                         <TextInput
                             color="bg-zinc-400"
-                            id="email"
-                            value={values.email}
+                            id="username"
+                            value={values.username}
                             onChange={handleChange} />
-                        <FieldError error={errors.email} />
                     </div>
+                    : ""
+                }
+                <div>
+                    <Label className="block text-sm font-medium leading-6 text-gray-900" value="Email:" />
+                    <TextInput
+                        color="bg-zinc-400"
+                        id="email"
+                        value={values.email}
+                        onChange={handleChange} />
+                    <FieldError error={errors.email} />
+                </div>
 
+                <div>
+                    <Label className="block text-sm font-medium leading-6 text-gray-900" value="Senha:" />
+                    <TextInput
+                        color="bg-zinc-400"
+                        type="password"
+                        id="password"
+                        value={values.password}
+                        onChange={handleChange} />
+                    <FieldError error={errors.password} />
+                </div>
+
+                {newUserState ?
                     <div>
-                        <Label className="block text-sm font-medium leading-6 text-gray-900" value="Senha:" />
+                        <Label className="block text-sm font-medium leading-6 text-gray-900" value="Confirmar Senha:" />
                         <TextInput
                             color="bg-zinc-400"
                             type="password"
-                            id="password"
-                            value={values.password}
+                            id="passwordMatch"
+                            value={values.passwordMatch}
                             onChange={handleChange} />
-                        <FieldError error={errors.password} />
+                        <FieldError error={errors.passwordMatch} />
                     </div>
+                    : ""}
 
+                <div className="flex gap-2 items-center">
                     {newUserState ?
-                        <div>
-                            <Label className="block text-sm font-medium leading-6 text-gray-900" value="Confirmar Senha:" />
-                            <TextInput
-                                color="bg-zinc-400"
-                                type="password"
-                                id="passwordMatch"
-                                value={values.passwordMatch}
-                                onChange={handleChange} />
-                            <FieldError error={errors.passwordMatch} />
+                        <div className="flex flex-row items-center gap-2">
+                            <Button type="submit" gradientDuoTone="greenToBlue">
+                                Salvar
+                            </Button>
+                            <Button type="button" color="failure" onClick={() => setNewUserState(false)} >
+                                Cancelar
+                            </Button>
                         </div>
-                        : ""}
-
-                    <div className="flex gap-2 items-center">
-                        {newUserState ?
-                            <div className="flex flex-row items-center gap-2">
-                                <Button type="submit" gradientDuoTone="greenToBlue">
-                                    Salvar
-                                </Button>
-                                <Button type="button" color="failure" onClick={() => setNewUserState(false)} >
-                                    Cancelar
-                                </Button>
-                            </div>
-                            :
-                            <div className="flex flex-row items-center gap-2">
-                                <Button type="submit" gradientDuoTone="purpleToBlue">
-                                    Login
-                                </Button>
-                                Não possui uma conta?
-                                <span className="cursor-pointer font-medium text-blue-600 dark:text-blue-500 hover:underline"
-                                    onClick={() => setNewUserState(true)} >Cadastre-se
-                                </span>
-                            </div>
-                        }
-                    </div>
-                </form>
-            </div>
+                        :
+                        <div className="flex flex-row items-center gap-2">
+                            <Button type="submit" gradientDuoTone="purpleToBlue">
+                                Login
+                            </Button>
+                            Não possui uma conta?
+                            <span className="cursor-pointer font-medium text-blue-600 dark:text-blue-500 hover:underline"
+                                onClick={() => setNewUserState(true)} >Cadastre-se
+                            </span>
+                        </div>
+                    }
+                </div>
+            </form>
         </div>
     );
 }
@@ -183,15 +181,15 @@ export function UserEditForm({ params: userId }: Props) {
     );
 
     async function onSubmit() {
-            notification.notify("Salvo com sucesso!", "success");
-            resetForm();
-            navigate(0);
+        notification.notify("Salvo com sucesso!", "success");
+        resetForm();
+        navigate(0);
     }
 
 
     return (
         <>
-            <div className="flex flex-col items-center justify-center mt-10">
+            <div className="flex flex-col items-center justify-center">
                 <div className="flex flex-row justify-between items-center text-xl font-semibold tracking-tight text-gray-700 mb-3 w-2/3">
                     <span className="flex flex-row items-center gap-2"><FaUser /> Editar Usuário </span>
                     <FaX onClick={() => navigate(-1)} className="hover:shadow-xl cursor-pointer rounded-full  p-1 border hover:bg-gray-300  text-2xl" />

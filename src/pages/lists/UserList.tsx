@@ -19,7 +19,7 @@ export default function Users() {
         const users = filter();
 
     return (
-        <div className="mt-10">
+        <div>
             <SearchBar
                 pageIcon={<FaUser />}
                 pageTitle="Usuários"

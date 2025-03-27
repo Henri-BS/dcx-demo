@@ -74,7 +74,7 @@ export function PostDetails({ params: postId }: Props) {
 
 
     return (
-        <div className="mt-10">
+        <div>
             <div className="flex flex-col md:flex-row justify-between  text-lg font-semibold text-gray-700">
 
                 <Breadcrumb aria-label="breadcrumb" className="mb-3 py-2">

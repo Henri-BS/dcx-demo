@@ -2,10 +2,11 @@ import { CategoryCard } from "components/cards/CategoryCard";
 import { EventCard } from "components/cards/EventCard";
 import { CarouselPostCard, PostSmCard } from "components/cards/PostCard";
 import { ProjectCard } from "components/cards/ProjectCard";
-import { CustomFlowbiteTheme, Flowbite, Carousel, Accordion, Banner, Breadcrumb } from "flowbite-react";
+import { CustomFlowbiteTheme, Flowbite, Carousel, Accordion, Banner, Breadcrumb, Button, List, ListItem, Modal } from "flowbite-react";
 import { Link } from "react-router-dom";
-import { FaHouse, FaX } from "react-icons/fa6";
+import { FaHouse, FaIcons, FaInfo, FaX } from "react-icons/fa6";
 import { categoryMock, eventMock, postMock, projectMock } from "mock/MockData";
+import { useState } from "react";
 
 export const customTheme: CustomFlowbiteTheme = {
     carousel: {
@@ -31,14 +32,49 @@ export const customTheme: CustomFlowbiteTheme = {
 
 export default function Home() {
 
-const posts =  postMock.sort(x => x.postId) ;
-const projects =  projectMock.sort(x => x.id) ;
-const categories =  categoryMock.sort(x => x.id) ;
-const events =  eventMock.sort(x => x.eventId) ;
+    const posts = postMock.sort(x => x.postId);
+    const projects = projectMock.sort(x => x.id);
+    const categories = categoryMock.sort(x => x.id);
+    const events = eventMock.sort(x => x.eventId);
+    const [infoModal, setInfoModal] = useState<boolean>(false);
 
     return (
         <>
-            <div className="mt-10">
+            <div>
+                <Banner className="w-80">
+                    <div className="flex w-full justify-between border border-gray-200 rounded-full hover:border-red-500 transiton duration-500 cursor-pointer bg-gray-50 p-2" >
+                        <p className="flex items-center gap-x-2 text-sm  font-bold text-red-500 " onClick={() => setInfoModal(true)}>
+                            <FaInfo className="text-red-500 border-2 border-red-500 p-[2px] text-xl rounded-full" /> Versão Demonstrativa
+                        </p>
+                        <Banner.CollapseButton color="gray" className="border-0 bg-transparent text-gray-500">
+                            <FaX  />
+                        </Banner.CollapseButton>
+                    </div>
+                </Banner>
+                <Modal show={infoModal} size="2xl" onClose={() => setInfoModal(false)}>
+                    <Modal.Header>Versão Demonstrativa</Modal.Header>
+                    <Modal.Body>
+                        <div className="text-gray-600 text-xl">
+                            Esta é uma demonstração com funcionalidades limitadas, possibilitando apenas a visualização de dados estáticos.
+
+                            <List  >
+                                <h2 className="font-semibold pt-2">Nesta versão as seguintes funções estão indisponíveis: </h2>
+                                <ListItem> Cadastro e login de usuário</ListItem>
+                                <ListItem> Adição de conteúdo</ListItem>
+                                <ListItem> Atualização de conteúdo</ListItem>
+                                <ListItem> Deleção de conteúdo</ListItem>
+                                Para saber mais sobre todas as funcionalidades disponíveis, acesse o link do projeto completo no GitHub e veja a descrição:
+                                <a href="https://github.com/Henri-BS/diario-caxias" className="text-blue-600 hover:text-blue-400 hover:underline">Diário Caxias GitHub</a>
+
+                            </List>
+                        </div>
+                    </Modal.Body>
+                    <Modal.Footer className="justify-end">
+                        <Button gradientDuoTone="purpleToBlue" onClick={() => setInfoModal(false)}>
+                            Ok
+                        </Button>
+                    </Modal.Footer>
+                </Modal>
                 <Breadcrumb aria-label="breadcrumb" className="mb-3 py-2">
                     <Breadcrumb.Item icon={FaHouse}>
                         <Link to="/">
@@ -46,18 +82,7 @@ const events =  eventMock.sort(x => x.eventId) ;
                         </Link>
                     </Breadcrumb.Item>
                 </Breadcrumb>
-                <Banner className="mb-4">
-                    <div className="flex w-full justify-between border-b border-gray-200 bg-gray-50 p-4">
-                        <div className="flex items-center">
-                            <p className="flex items-center text-sm  font-bold text-red-500 ">
-                                Esta é uma demonstração com funcionalidades limitadas, possibilitando apenas a visualização de dados estáticos.
-                            </p>
-                        </div>
-                        <Banner.CollapseButton color="gray" className="border-0 bg-transparent text-gray-500 dark:text-gray-400">
-                            <FaX className="h-4 w-4" />
-                        </Banner.CollapseButton>
-                    </div>
-                </Banner>
+
                 <Accordion collapseAll>
                     <Accordion.Panel>
                         <Accordion.Title>
@@ -71,8 +96,6 @@ const events =  eventMock.sort(x => x.eventId) ;
                                 O Diário Caxias se compromete em estabelecer um vínculo entre a educação formal e a informal, permitindo que pessoas das mais diversas áreas ou níveis acadêmicos possam participar ativamente das atividades propostas, almejando uma participação multidisciplinar dos Caxienses.
                                 Para saber um pouco mais sobre os recentes projetos ou eventos, clique nas últimas nóticias que aparecem aqui ao lado e faça a sua história em sua cidade.
                             </p>
-
-
                         </Accordion.Content>
                     </Accordion.Panel>
                 </Accordion>

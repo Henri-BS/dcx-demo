@@ -67,7 +67,7 @@ export function EventDetails({ params: eventId }: Props) {
     }
 
     return (
-        <div className="mt-10">
+        <div>
             <div className="flex flex-col md:flex-row justify-between py-4 text-lg font-semibold text-gray-700">
 
                 <Breadcrumb aria-label="breadcrumb" className="mb-3 py-2">

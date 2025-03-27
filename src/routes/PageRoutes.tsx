@@ -23,7 +23,7 @@ export default function PageRoutes() {
         <>
             <BrowserRouter>
                 <Header />
-                <div className={`mt-10 p-6`} >
+                <div className="p-4" >
                     <Routes>
                         <Route path="/" element={<Home />} />
                         <Route path="/login" element={<Login />} />

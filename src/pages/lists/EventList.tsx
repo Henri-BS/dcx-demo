@@ -24,7 +24,7 @@ export default function Events() {
     const events = filter();
 
     return (
-        <div className="mt-10">
+        <div>
             <Breadcrumb aria-label="breadcrumb" className="mb-3 py-2">
                 <Breadcrumb.Item icon={FaIcons.FaHouse}>
                     <Link to="/">

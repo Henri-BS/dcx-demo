@@ -27,7 +27,7 @@ export function CategoryDetails({ params: categoryName }: Props) {
     const projectCategory = filterProjectCategory(categoryName);
 
     return (
-        <div className="mt-10">
+        <div>
             <Breadcrumb aria-label="breadcrumb" className="mb-3 py-2">
                 <Breadcrumb.Item icon={FaIcons.FaHouse}>
                     <Link to="/">

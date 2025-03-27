@@ -1,6 +1,6 @@
 import { useEffect, useState } from "react"
 import * as FaIcons from "react-icons/fa6";
-import { Button, Dropdown, Modal, Sidebar, Tooltip, Footer as FooterFR } from "flowbite-react";
+import { Button, Dropdown, Modal, Sidebar, Tooltip, Footer as FooterFR, Banner, List, ListItem } from "flowbite-react";
 import { useAuth } from "resources/auth";
 import { User } from "resources/user";
 import { Link, useNavigate } from "react-router-dom";
@@ -16,8 +16,8 @@ export const removeAccents = (str: any) => {
 export const Header = () => {
 
     const auth = useAuth();
-    const userSession = auth.getUserSession();
     const navigate = useNavigate();
+    const userSession = auth.getUserSession();
     const userId = userSession?.id;
 
     function FindUser() {
@@ -103,7 +103,7 @@ export const Header = () => {
                     </div>
                 </div>
             </header>
-
+            <div className="mt-[5rem]"/>
             <div>
                 <div className={isOpen ? "fixed z-40 top-0 left-full transition duration-600" : "flex flex-col justify-top fixed z-40  bg-zinc-800 w-80 h-screen top-20 left-0 transition duration-600"}>
                     <div className="w-full p-6" >

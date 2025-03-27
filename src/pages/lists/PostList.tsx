@@ -20,7 +20,7 @@ export default function Posts() {
     const posts = filter();
 
     return (
-        <div className="mt-10">
+        <div>
             <Breadcrumb aria-label="breadcrumb" className="mb-3 py-2">
                 <Breadcrumb.Item icon={FaHouse}>
                     <Link to="/">
