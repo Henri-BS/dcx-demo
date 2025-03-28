@@ -28,19 +28,18 @@ export function ProjectProfile() {
         const [deleteModal, setDeleteModal] = useState(false);
         const navigate = useNavigate();
 
+        
+        const projectById = projectMock.filter(x => x.id.toString() === projectId);
+        const eventByProject = eventMock.filter(x => x.projectId?.toString() === projectId);
+        const posts = eventPostMock?.filter((post, index, self) => {
+            return post.projectId?.toString() === projectId && self.map(p => p.postId).indexOf(post.postId) === index;
+        })
         const deleteProject = () => {
             setDeleteModal(false)
             navigate("/projetos")
             notification.notify("Deletado com sucesso!", "success");
         }
-
-        const projectById = projectMock.filter(x => x.id.toString() === projectId);
-        const eventByProject = eventMock.filter(x => x.projectId?.toString() === projectId);
-
-        const posts = eventPostMock?.filter((post, index, self) => {
-            return post.projectId?.toString() === projectId && self.map(p => p.postId).indexOf(post.postId) === index;
-        })
-
+        
         return (
             <div>
                 <div className="flex flex-col md:flex-row justify-between  text-lg font-semibold text-gray-700">
