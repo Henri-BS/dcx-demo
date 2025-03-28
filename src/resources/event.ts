@@ -12,14 +12,6 @@ export type Event = {
   username?: string;
 };
 
-export type EventPage = {
-  content: Event[];
-  page: {
-    totalElements: number;
-    number: number;
-  };
-};
-
 export type EventProps = {
   event: Event;
 };

@@ -1,23 +1,15 @@
 import { PostSmCard } from "components/cards/PostCard";
-import { Pagination } from "components/shared/Pagination";
-import { ProjectMockProfile } from "mock/MockProfile";
-import { EventPage } from "resources/event";
-import { Post } from "resources/post";
-import { Project, ProjectCategory } from "resources/project";
 import { Accordion, Breadcrumb, Button, Dropdown, Modal, Tabs, Timeline } from "flowbite-react";
 
-import { useEffect, useState } from "react";
+import { useState } from "react";
 import * as FaIcons from "react-icons/fa6";
 import { Props } from "resources";
 import { Link, useNavigate, useParams } from "react-router-dom";
-import axios from "axios";
-import { baseUrl } from "utils/requests";
-import { useAuth } from "resources/auth";
 import { ProjectCategoryAddForm, ProjectEditForm } from "pages/forms/ProjectForm";
 import moment from "moment";
 import { EventSmCard } from "components/cards/EventCard";
 import { CustomMarkdown } from "components/shared/Template";
-import { categoryMock, eventMock, eventPostMock, projectMock } from "mock/MockData";
+import { eventMock, eventPostMock, projectMock } from "mock/MockData";
 import { CategoryCard } from "components/cards/CategoryCard";
 import { useNotification } from "components/shared/Notification";
 
@@ -30,18 +22,17 @@ export function ProjectProfile() {
     );
 
     function ProjectDetails({ params: projectId }: Props) {
-        const auth = useAuth();
         const notification = useNotification();
         const [edit, setEdit] = useState(false);
         const [addCategory, setAddCategory] = useState(false);
         const [deleteModal, setDeleteModal] = useState(false);
         const navigate = useNavigate();
 
-const deleteProject = () => {
-    setDeleteModal(false)
-    navigate("/projetos")
-    notification.notify("Deletado com sucesso!", "success");
-}
+        const deleteProject = () => {
+            setDeleteModal(false)
+            navigate("/projetos")
+            notification.notify("Deletado com sucesso!", "success");
+        }
 
         const projectById = projectMock.filter(x => x.id.toString() === projectId);
         const eventByProject = eventMock.filter(x => x.projectId?.toString() === projectId);
@@ -175,15 +166,15 @@ const deleteProject = () => {
                                         </Tabs.Item>
 
                                         <Tabs.Item title="Categorias" icon={FaIcons.FaTag}>
-                                                <div className="grid grid-cols-2 md:grid-cols-4 lg:grid-cols-6 gap-y-10 gap-x-4 items-start p-4">
-                                                    {projectById?.map(project => (
-                                                        project.category?.map(x => {
-                                                            return (
-                                                                <CategoryCard category={x} />
-                                                            )
-                                                        })
-                                                    ))}
-                                                </div>
+                                            <div className="grid grid-cols-2 md:grid-cols-4 lg:grid-cols-6 gap-y-10 gap-x-4 items-start p-4">
+                                                {projectById?.map(project => (
+                                                    project.category?.map(x => {
+                                                        return (
+                                                            <CategoryCard category={x} />
+                                                        )
+                                                    })
+                                                ))}
+                                            </div>
                                         </Tabs.Item>
 
                                         <Tabs.Item active title="Postagens" icon={FaIcons.FaNewspaper}>

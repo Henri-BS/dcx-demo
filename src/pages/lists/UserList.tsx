@@ -1,4 +1,4 @@
-import { SearchBar } from "components/shared/Pagination";
+import { SearchBar } from "components/shared/SearchBar";
 import { UserCard } from "components/cards/UserCards";
 import { useState } from "react";
 import { removeAccents } from "components/shared/Template";

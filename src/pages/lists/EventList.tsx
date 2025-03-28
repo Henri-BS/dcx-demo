@@ -1,5 +1,5 @@
 import { EventCard } from "components/cards/EventCard";
-import { SearchBar } from "components/shared/Pagination";
+import { SearchBar } from "components/shared/SearchBar";
 import { useState } from "react";
 import { removeAccents } from "components/shared/Template";
 import * as FaIcons from "react-icons/fa6";

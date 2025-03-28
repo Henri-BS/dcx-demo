@@ -1,5 +1,5 @@
 import { PostCard } from "components/cards/PostCard";
-import { SearchBar } from "components/shared/Pagination";
+import { SearchBar } from "components/shared/SearchBar";
 import { removeAccents } from "components/shared/Template";
 import { Breadcrumb } from "flowbite-react";
 import { postMock } from "mock/MockData";

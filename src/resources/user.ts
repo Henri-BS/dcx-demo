@@ -13,16 +13,6 @@ export type User = {
   createdDate?: string;
 };
 
-export type UserPage = {
-  content: User[];
-  page: {
-    size?: number;
-    totalElements: number;
-    totalPages?: number;
-    number: number;
-  };
-};
-
 export type UserProps = {
   user: User;
 };

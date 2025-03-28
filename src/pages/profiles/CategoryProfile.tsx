@@ -14,17 +14,8 @@ export function CategoryProfile() {
 
 export function CategoryDetails({ params: categoryName }: Props) {
 
-    const filter = (name: any) => {
-        return categoryMock.filter(x => x.categoryName === name)
-    }
-
-    const categoryByName = filter(categoryName);
-
-    const filterProjectCategory = (name: any) => {
-        return projectMock.filter(x => x.category?.filter(x => x.categoryName === name))
-    }
-
-    const projectCategory = filterProjectCategory(categoryName);
+    const categoryByName = categoryMock.filter(x => x.categoryName === categoryName);
+    const projectCategory = projectMock.filter(x => x.category?.filter(x => x.categoryName === categoryName));
 
     return (
         <div>

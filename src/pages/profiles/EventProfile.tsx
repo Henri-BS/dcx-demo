@@ -1,21 +1,16 @@
-import axios from "axios";
 import { PostSmCard } from "components/cards/PostCard";
 import { UserCard } from "components/cards/UserCards";
-import { Pagination } from "components/shared/Pagination";
+import { useNotification } from "components/shared/Notification";
 import { CustomMarkdown } from "components/shared/Template";
 import { Breadcrumb, Button, Dropdown, Modal, Tabs } from "flowbite-react";
-import { EventMockProfile } from "mock/MockProfile";
+import { eventMock, eventPostMock } from "mock/MockData";
 import moment from "moment";
 import { EventEditForm } from "pages/forms/EventForm";
-import { useState, useEffect } from "react";
+import { useState } from "react";
 import * as FaIcons from "react-icons/fa6";
 import * as GoIcons from "react-icons/go";
 import { Link, useNavigate, useParams } from "react-router-dom";
 import { Props } from "resources";
-import { Event } from "resources/event";
-import { Post } from "resources/post";
-import { UserPage } from "resources/user";
-import { baseUrl } from "utils/requests";
 
 
 export function EventProfile() {
@@ -28,48 +23,23 @@ export function EventProfile() {
 }
 
 export function EventDetails({ params: eventId }: Props) {
-    const [event, setEvent] = useState<Event>();
-    const [userPage, setUserPage] = useState<UserPage>({ content: [], page: { number: 0, totalElements: 0 } });
-    const [posts, setPosts] = useState<Post[]>();
-    const [pageNumber, setPageNumber] = useState(0);
-    const handlePageChange = (newPageNumber: number) => {
-        setPageNumber(newPageNumber);
-    }
-    const params = useParams();
+    const navigate = useNavigate();
+    const notification = useNotification();
     const [edit, setEdit] = useState<boolean>(false);
     const [deleteModal, setDeleteModal] = useState(false);
-    const navigate = useNavigate();
 
-    useEffect(() => {
-        axios.get(`${baseUrl}/events/${eventId}`)
-            .then((response) => {
-                setEvent(response.data);
-            })
-    }, [eventId]);
-
-    useEffect(() => {
-        axios.get(`${baseUrl}/event-user?eventId=${eventId}&page=${pageNumber}&size=9`)
-            .then((response) => {
-                setUserPage(response.data);
-            })
-        axios.get(`${baseUrl}/event-post?eventId=${eventId}&page=${pageNumber}&size=8`)
-            .then((response) => {
-                setPosts(response.data);
-            });
-    }, [eventId, pageNumber]);
+    const eventById = eventMock.filter(x => x.eventId.toString() === eventId);
+    const postsByEvent = eventPostMock.filter(x => x.eventId.toString() === eventId);
 
     const deleteEvent = () => {
-        axios.delete(`${baseUrl}/events/delete/${eventId}`)
-            .then((response) => {
-                navigate("/eventos");
-                return response.status
-            })
+        setDeleteModal(false)
+        navigate("/eventos")
+        notification.notify("Deletado com sucesso!", "success");
     }
 
     return (
         <div>
             <div className="flex flex-col md:flex-row justify-between py-4 text-lg font-semibold text-gray-700">
-
                 <Breadcrumb aria-label="breadcrumb" className="mb-3 py-2">
                     <Breadcrumb.Item icon={FaIcons.FaHouse}>
                         <Link to="/">
@@ -88,14 +58,14 @@ export function EventDetails({ params: eventId }: Props) {
                     </Breadcrumb.Item>
                 </Breadcrumb>
 
-                    <Dropdown label="Configurações" inline>
-                        <Dropdown.Item icon={FaIcons.FaSquarePen} onClick={() => setEdit(true)} className="text-md font-medium">
-                            Editar
-                        </Dropdown.Item>
-                        <Dropdown.Item icon={FaIcons.FaTrash} onClick={() => setDeleteModal(true)} className="text-md font-medium">
-                            Deletar
-                        </Dropdown.Item>
-                    </Dropdown>
+                <Dropdown label="Configurações" inline>
+                    <Dropdown.Item icon={FaIcons.FaSquarePen} onClick={() => setEdit(true)} className="text-md font-medium">
+                        Editar
+                    </Dropdown.Item>
+                    <Dropdown.Item icon={FaIcons.FaTrash} onClick={() => setDeleteModal(true)} className="text-md font-medium">
+                        Deletar
+                    </Dropdown.Item>
+                </Dropdown>
                 <Modal show={deleteModal} size="md" onClose={() => setDeleteModal(false)} popup>
                     <Modal.Header />
                     <Modal.Body>
@@ -116,7 +86,7 @@ export function EventDetails({ params: eventId }: Props) {
                     </Modal.Body>
                 </Modal>
             </div>
-            {!event ? <EventMockProfile params={`${params.eventId}`} /> :
+            {eventById.map(event =>
                 <div>
                     {edit ? <EventEditForm params={eventId} /> :
                         <div>
@@ -150,23 +120,23 @@ export function EventDetails({ params: eventId }: Props) {
                             </div>
                             <Tabs className="mt-4 text-zinc-500 p-1 rounded-md overflow-scroll" variant="fullWidth">
                                 <Tabs.Item active title="Postagens" icon={FaIcons.FaNewspaper}>
-                                    <div className=" grid grid-cols-1 gap-y-6 gap-x-4 items-start p-8 divide-y divide-gray-300">
-                                        {posts?.map((post) => (
+                                    <div className="grid grid-cols-1 gap-y-6 gap-x-4 items-start p-8 divide-y divide-gray-300">
+                                        {postsByEvent?.map((post) => (
                                             <>
                                                 <PostSmCard post={post} />
                                             </>
                                         ))}
                                     </div>
-
                                 </Tabs.Item>
 
                                 <Tabs.Item title="Participantes" icon={FaIcons.FaUsersRectangle}>
-                                    <Pagination pagination={userPage} onPageChange={handlePageChange} />
-                                    <div className="  grid grid-cols-1 md:grid-cols-3 gap-y-10 gap-x-6 items-start p-8">
-                                        {userPage.content?.map(user => (
-                                            <div key={user?.id} className="relative flex flex-col sm:flex-row xl:flex-col items-start ">
-                                                <UserCard user={user} />
-                                            </div>
+                                    <div className="grid grid-cols-1 md:grid-cols-3 gap-y-10 gap-x-6 items-start p-8">
+                                        {eventById.map(x => (
+                                            x.users?.map(user =>
+                                                <div key={user?.userId} className="relative flex flex-col sm:flex-row xl:flex-col items-start ">
+                                                    <UserCard user={user} />
+                                                </div>
+                                            )
                                         ))}
                                     </div>
                                 </Tabs.Item>
@@ -177,7 +147,7 @@ export function EventDetails({ params: eventId }: Props) {
                         </div>
                     }
                 </div>
-            }
+            )}
         </div>
     );
 }

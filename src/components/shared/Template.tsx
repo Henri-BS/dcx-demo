@@ -1,13 +1,10 @@
-import { useEffect, useState } from "react"
+import { useState } from "react"
 import * as FaIcons from "react-icons/fa6";
-import { Button, Dropdown, Modal, Sidebar, Tooltip, Footer as FooterFR, Banner, List, ListItem } from "flowbite-react";
-import { useAuth } from "resources/auth";
-import { User } from "resources/user";
+import { Button, Dropdown, Modal, Sidebar, Tooltip, Footer as FooterFR } from "flowbite-react";
 import { Link, useNavigate } from "react-router-dom";
-import axios from "axios";
-import { baseUrl } from "utils/requests";
 import Markdown from "react-markdown";
 import gfm from 'remark-gfm'
+import { userMock } from "mock/MockData";
 
 export const removeAccents = (str: any) => {
     return str.normalize("NFD").replace(/[\u0300-\u036f]/g, "");
@@ -15,48 +12,42 @@ export const removeAccents = (str: any) => {
 
 export const Header = () => {
 
-    const auth = useAuth();
     const navigate = useNavigate();
-    const userSession = auth.getUserSession();
-    const userId = userSession?.id;
+    const userId = 32;
+
 
     function FindUser() {
-        const [user, setUser] = useState<User>();
-        useEffect(() => {
-            if (!!userSession) {
-                axios.get(`${baseUrl}/users/${userId}`)
-                    .then((response) => {
-                        setUser(response.data);
-                    });
-            }
-        }, []);
-        return (
+        const userById = userMock.filter(x => x.id === userId);
 
-            <Dropdown label="" dismissOnClick={false}
-                renderTrigger={() => <img src={user?.userImage ?? "https://cdn1.iconfinder.com/data/icons/basic-ui-element-2-2-line/512/Basic_UI_Elements_-_2.1_-_line-11-256.png"} className="h-12 w-12 rounded-full bg-[#ffffffbe] cursor-point border border-gray-100 transition duration-600 hover:border-blue-500" alt={user?.username} />}>
-                <Tooltip content={user?.username}>
-                    <Link to={`/perfil/${userId}`}>
-                        <Dropdown.Item icon={FaIcons.FaUser} className="text-md font-medium">
-                            Meu Perfil
-                        </Dropdown.Item>
-                    </Link>
-                </Tooltip>
-                <Link to={`/perfil/editar/${userId}`}>
-                    <Dropdown.Item icon={FaIcons.FaSquarePen} className="text-md font-medium">
-                        Editar Perfil
-                    </Dropdown.Item>
-                </Link>
-                <Link to="/login" >
-                    <Dropdown.Item icon={FaIcons.FaRightFromBracket} className="text-md font-medium" onClick={logout}>
-                        Sair
-                    </Dropdown.Item>
-                </Link>
-            </Dropdown>
+        return (
+            <>
+                {userById.map(user => (
+                    <Dropdown label="" dismissOnClick={false}
+                        renderTrigger={() => <img src={user?.userImage ?? "https://cdn1.iconfinder.com/data/icons/basic-ui-element-2-2-line/512/Basic_UI_Elements_-_2.1_-_line-11-256.png"} className="h-12 w-12 rounded-full bg-[#ffffffbe] cursor-point border border-gray-100 transition duration-600 hover:border-blue-500" alt={user?.username} />}>
+                        <Tooltip content={user?.username}>
+                            <Link to={`/perfil/${userId}`}>
+                                <Dropdown.Item icon={FaIcons.FaUser} className="text-md font-medium">
+                                    Meu Perfil
+                                </Dropdown.Item>
+                            </Link>
+                        </Tooltip>
+                        <Link to={`/perfil/editar/${userId}`}>
+                            <Dropdown.Item icon={FaIcons.FaSquarePen} className="text-md font-medium">
+                                Editar Perfil
+                            </Dropdown.Item>
+                        </Link>
+                        <Link to="/login" >
+                            <Dropdown.Item icon={FaIcons.FaRightFromBracket} className="text-md font-medium" onClick={logout}>
+                                Sair
+                            </Dropdown.Item>
+                        </Link>
+                    </Dropdown>
+                ))}
+            </>
         )
     }
 
     function logout() {
-        auth.invalidateSession();
         navigate(0);
     }
 
@@ -91,19 +82,15 @@ export const Header = () => {
                                 <Dropdown.Item icon={FaIcons.FaNewspaper}>Postagem </Dropdown.Item>
                             </Link>
                         </Dropdown>
-                        {!userSession ?
-                            <Link to={"/login"} >
-                                <Button gradientDuoTone="greenToBlue">Login</Button>
-                            </Link>
-                            :
-                            <div className="flex flex-row items-center">
-                                <FindUser />
-                            </div>
-                        }
+
+                        <div className="flex flex-row items-center">
+                            <FindUser />
+                        </div>
+
                     </div>
                 </div>
             </header>
-            <div className="mt-[5rem]"/>
+            <div className="mt-[5rem]" />
             <div>
                 <div className={isOpen ? "fixed z-40 top-0 left-full transition duration-600" : "flex flex-col justify-top fixed z-40  bg-zinc-800 w-80 h-screen top-20 left-0 transition duration-600"}>
                     <div className="w-full p-6" >

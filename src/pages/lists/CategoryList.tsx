@@ -1,5 +1,5 @@
 import { CategoryCard } from "components/cards/CategoryCard";
-import { SearchBar } from "components/shared/Pagination";
+import { SearchBar } from "components/shared/SearchBar";
 import { useState } from "react";
 import { removeAccents } from "components/shared/Template";
 import { FaHouse, FaTags } from "react-icons/fa6";

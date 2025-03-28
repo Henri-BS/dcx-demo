@@ -2,9 +2,9 @@ import { CategoryCard } from "components/cards/CategoryCard";
 import { EventCard } from "components/cards/EventCard";
 import { CarouselPostCard, PostSmCard } from "components/cards/PostCard";
 import { ProjectCard } from "components/cards/ProjectCard";
-import { CustomFlowbiteTheme, Flowbite, Carousel, Accordion, Banner, Breadcrumb, Button, List, ListItem, Modal } from "flowbite-react";
+import { CustomFlowbiteTheme, Flowbite, Carousel, Accordion, Banner, Breadcrumb, Button, Modal } from "flowbite-react";
 import { Link } from "react-router-dom";
-import { FaHouse, FaIcons, FaInfo, FaX } from "react-icons/fa6";
+import  * as FaIcons from "react-icons/fa6";
 import { categoryMock, eventMock, postMock, projectMock } from "mock/MockData";
 import { useState } from "react";
 
@@ -41,32 +41,35 @@ export default function Home() {
     return (
         <>
             <div>
-                <Banner className="w-80">
-                    <div className="flex w-full justify-between border border-gray-200 rounded-full hover:border-red-500 transiton duration-500 cursor-pointer bg-gray-50 p-2" >
-                        <p className="flex items-center gap-x-2 text-sm  font-bold text-red-500 " onClick={() => setInfoModal(true)}>
-                            <FaInfo className="text-red-500 border-2 border-red-500 p-[2px] text-xl rounded-full" /> Versão Demonstrativa
-                        </p>
-                        <Banner.CollapseButton color="gray" className="border-0 bg-transparent text-gray-500">
-                            <FaX  />
-                        </Banner.CollapseButton>
-                    </div>
-                </Banner>
+                <div className="flex flex-col md:flex-row md:items-center justify-between mb-3 space-y-2">
+                    <Breadcrumb aria-label="breadcrumb">
+                        <Breadcrumb.Item icon={FaIcons.FaHouse}>
+                            <Link to="/">
+                                Início
+                            </Link>
+                        </Breadcrumb.Item>
+                    </Breadcrumb>
+                    <Banner className="md:w-80 ">
+                        <div className="flex w-full justify-between border border-red-300 rounded-full hover:border-red-500 transiton duration-500 cursor-pointer bg-gray-50 " >
+                            <p className="flex items-center w-full rounded-l-full gap-x-2 text-sm font-bold text-red-500 px-2" onClick={() => setInfoModal(true)}>
+                                <FaIcons.FaInfo className="text-red-500 border-2 border-red-500 p-[2px] text-xl rounded-full" /> Versão Demonstrativa
+                            </p>
+                            <Banner.CollapseButton color="gray" className="border-0 rounded-r-full bg-transparent text-gray-500">
+                                <FaIcons.FaX />
+                            </Banner.CollapseButton>
+                        </div>
+                    </Banner>
+                </div>
                 <Modal show={infoModal} size="2xl" onClose={() => setInfoModal(false)}>
                     <Modal.Header>Versão Demonstrativa</Modal.Header>
                     <Modal.Body>
-                        <div className="text-gray-600 text-xl">
+                        <div className="text-gray-600 text-md">
                             Esta é uma demonstração com funcionalidades limitadas, possibilitando apenas a visualização de dados estáticos.
-
-                            <List  >
-                                <h2 className="font-semibold pt-2">Nesta versão as seguintes funções estão indisponíveis: </h2>
-                                <ListItem> Cadastro e login de usuário</ListItem>
-                                <ListItem> Adição de conteúdo</ListItem>
-                                <ListItem> Atualização de conteúdo</ListItem>
-                                <ListItem> Deleção de conteúdo</ListItem>
-                                Para saber mais sobre todas as funcionalidades disponíveis, acesse o link do projeto completo no GitHub e veja a descrição:
-                                <a href="https://github.com/Henri-BS/diario-caxias" className="text-blue-600 hover:text-blue-400 hover:underline">Diário Caxias GitHub</a>
-
-                            </List>
+                            <br/>
+                            Funcionalidades como: cadastro, login, adição, atualização ou remoção de conteúdo são meramente visuais e não implicam em alterações na plataforma.
+                            <br/>
+                            Para saber mais sobre todas as funcionalidades disponíveis, acesse o link do projeto completo no GitHub e veja a descrição:
+                            <a href="https://github.com/Henri-BS/diario-caxias" className=" mx-2 text-blue-600 hover:text-blue-400 hover:underline">Diário Caxias GitHub</a>
                         </div>
                     </Modal.Body>
                     <Modal.Footer className="justify-end">
@@ -75,23 +78,16 @@ export default function Home() {
                         </Button>
                     </Modal.Footer>
                 </Modal>
-                <Breadcrumb aria-label="breadcrumb" className="mb-3 py-2">
-                    <Breadcrumb.Item icon={FaHouse}>
-                        <Link to="/">
-                            Início
-                        </Link>
-                    </Breadcrumb.Item>
-                </Breadcrumb>
 
                 <Accordion collapseAll>
                     <Accordion.Panel>
                         <Accordion.Title>
-                            <h5 className="flex flex-row justify-between sm:text-lg md:text-xl font-semibold tracking-tight text-gray-900 text-center">
+                            <h5 className="flex flex-row justify-between sm:text-md md:text-xl font-semibold tracking-tight text-gray-600 text-center">
                                 Boas vindas ao Diário Caxias
                             </h5>
                         </Accordion.Title>
                         <Accordion.Content>
-                            <p className="font-normal text-gray-700 text-justify">
+                            <p className="font-normal sm:text-sm text-gray-700 text-justify">
                                 Aqui nesta plataforma você poderá encontrar um vasto acervo de projetos e eventos que visam contribuir com o desenvolvimento educacional, profissional e cultural da cidade de Caxias do Maranhão.
                                 O Diário Caxias se compromete em estabelecer um vínculo entre a educação formal e a informal, permitindo que pessoas das mais diversas áreas ou níveis acadêmicos possam participar ativamente das atividades propostas, almejando uma participação multidisciplinar dos Caxienses.
                                 Para saber um pouco mais sobre os recentes projetos ou eventos, clique nas últimas nóticias que aparecem aqui ao lado e faça a sua história em sua cidade.

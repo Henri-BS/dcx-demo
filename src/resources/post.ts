@@ -11,14 +11,6 @@ export type Post = {
   userBio?: string;
 };
 
-export type PostPage = {
-  content: Post[];
-  page: {
-    totalElements: number;
-    number: number;
-  };
-};
-
 export type PostProps = {
   post: Post;
 };

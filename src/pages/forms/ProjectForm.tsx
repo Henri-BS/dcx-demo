@@ -3,12 +3,10 @@ import { TextInput, Textarea, Button, Label, Breadcrumb } from "flowbite-react";
 import { useFormik } from "formik";
 import { FaFolderClosed, FaHouse, FaTag, FaX } from "react-icons/fa6";
 import { Link, useNavigate } from "react-router-dom";
-import { useAuth } from "resources/auth";
 import { Project, ProjectCategory } from "resources/project";
 import * as Yup from "yup";
-import { Login } from "./UserForm";
 import { Props } from "resources";
-import { categoryMock, projectMock } from "mock/MockData";
+import { categoryMock } from "mock/MockData";
 
 export const projectValidationSchema = Yup.object().shape({
     projectTitle: Yup.string()

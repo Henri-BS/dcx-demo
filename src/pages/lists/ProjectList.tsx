@@ -1,5 +1,5 @@
 import { ProjectCard } from "components/cards/ProjectCard";
-import { SearchBar } from "components/shared/Pagination";
+import { SearchBar } from "components/shared/SearchBar";
 import { useState } from "react";
 import { removeAccents } from "components/shared/Template";
 import { FaFolderClosed, FaHouse } from "react-icons/fa6";

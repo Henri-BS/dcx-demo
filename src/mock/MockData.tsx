@@ -641,13 +641,45 @@ export const eventMock = [
         "projectTitle": "Agrobairros",
         "userId": 30,
         "username": "Ellias Santana",
-        "posts": [
+        "users": [
             {
-                "postId": 1,
-                "postTitle": "Janeiro Agro: Seminários, Hortas Comunitárias, Palestras e Atividades Práticas no Bairro Nova Caxias",
-                "postImage": "https://sustentavel.com.br/wp-content/uploads/2020/07/Hortas-comunit%C3%A1rias-1.jpg",
+                "userId": 4,
+                "username": "Anna Rocha",
+                "userImage": "https://cdn2.iconfinder.com/data/icons/diversity-v2-0-volume-01/64/artist-asian-female-512.png",
             },
-        ],
+            {
+                "userId": 5,
+                "username": "Leonardo Silva",
+                "userImage": "https://cdn0.iconfinder.com/data/icons/diversity-avatars-vol-4/64/hipster-man-caucasian-beard-512.png",
+            },
+            {
+                "userId": 6,
+                "username": "Raquel Silva",
+                "userImage": "https://cdn0.iconfinder.com/data/icons/diversity-avatars-vol-4/64/woman-round-glasses-hair-bun-512.png",
+            },
+            {
+                "userId": 7,
+                "username": "Lyanne Almeida",
+                "userImage": "https://cdn2.iconfinder.com/data/icons/health-care-and-first-responders/64/ems-black-female-coronavirus-512.png",
+            },
+            {
+                "userId": 12,
+                "username": "Elenora Lima",
+            },
+            {
+                "userId": 13,
+                "username": "Pietra Silva",
+            },
+            {
+                "userId": 14,
+                "username": "Rafael Silva",
+            },
+            {
+                "userId": 15,
+                "username": "Mary Gomes",
+            },
+        ]
+
     },
     {
         "eventId": 2,
@@ -661,13 +693,23 @@ export const eventMock = [
         "projectTitle": "Agrobairros",
         "userId": 30,
         "username": "Ellias Santana",
-        "posts": [
+        "users": [
             {
-                "postId": 1,
-                "postTitle": "Janeiro Agro: Seminários, Hortas Comunitárias, Palestras e Atividades Práticas no Bairro Nova Caxias",
-                "postImage": "https://sustentavel.com.br/wp-content/uploads/2020/07/Hortas-comunit%C3%A1rias-1.jpg",
+                "userId": 4,
+                "username": "Anna Rocha",
+                "userImage": "https://cdn2.iconfinder.com/data/icons/diversity-v2-0-volume-01/64/artist-asian-female-512.png",
             },
-        ],
+            {
+                "userId": 5,
+                "username": "Leonardo Silva",
+                "userImage": "https://cdn0.iconfinder.com/data/icons/diversity-avatars-vol-4/64/hipster-man-caucasian-beard-512.png",
+            },
+            {
+                "userId": 6,
+                "username": "Raquel Silva",
+                "userImage": "https://cdn0.iconfinder.com/data/icons/diversity-avatars-vol-4/64/woman-round-glasses-hair-bun-512.png",
+            },
+        ]
     },
     {
         "eventId": 3,
@@ -681,13 +723,33 @@ export const eventMock = [
         "projectTitle": "Agrobairros",
         "userId": 30,
         "username": "Ellias Santana",
-        "posts": [
+        "users": [
             {
-                "postId": 1,
-                "postTitle": "Janeiro Agro: Seminários, Hortas Comunitárias, Palestras e Atividades Práticas no Bairro Nova Caxias",
-                "postImage": "https://sustentavel.com.br/wp-content/uploads/2020/07/Hortas-comunit%C3%A1rias-1.jpg",
+                "userId": 4,
+                "username": "Anna Rocha",
+                "userImage": "https://cdn2.iconfinder.com/data/icons/diversity-v2-0-volume-01/64/artist-asian-female-512.png",
             },
-        ],
+            {
+                "userId": 5,
+                "username": "Leonardo Silva",
+                "userImage": "https://cdn0.iconfinder.com/data/icons/diversity-avatars-vol-4/64/hipster-man-caucasian-beard-512.png",
+            },
+            {
+                "userId": 6,
+                "username": "Raquel Silva",
+                "userImage": "https://cdn0.iconfinder.com/data/icons/diversity-avatars-vol-4/64/woman-round-glasses-hair-bun-512.png",
+            },
+            {
+                "userId": 7,
+                "username": "Lyanne Almeida",
+                "userImage": "https://cdn2.iconfinder.com/data/icons/health-care-and-first-responders/64/ems-black-female-coronavirus-512.png",
+            },
+            {
+                "userId": 8,
+                "username": "Ellioth Almeida",
+                "userImage": "https://cdn0.iconfinder.com/data/icons/diversity-v2-0-volume-08/64/asian-beatnik-glasses-goatee-manbun-512.png",
+            },
+        ]
     },
     {
         "eventId": 4,
@@ -701,13 +763,23 @@ export const eventMock = [
         "projectTitle": "Agrobairros",
         "userId": 30,
         "username": "Ellias Santana",
-        "posts": [
+        "users": [
             {
-                "postId": 1,
-                "postTitle": "Janeiro Agro: Seminários, Hortas Comunitárias, Palestras e Atividades Práticas no Bairro Nova Caxias",
-                "postImage": "https://sustentavel.com.br/wp-content/uploads/2020/07/Hortas-comunit%C3%A1rias-1.jpg",
+                "userId": 6,
+                "username": "Raquel Silva",
+                "userImage": "https://cdn0.iconfinder.com/data/icons/diversity-avatars-vol-4/64/woman-round-glasses-hair-bun-512.png",
             },
-        ],
+            {
+                "userId": 7,
+                "username": "Lyanne Almeida",
+                "userImage": "https://cdn2.iconfinder.com/data/icons/health-care-and-first-responders/64/ems-black-female-coronavirus-512.png",
+            },
+            {
+                "userId": 8,
+                "username": "Ellioth Almeida",
+                "userImage": "https://cdn0.iconfinder.com/data/icons/diversity-v2-0-volume-08/64/asian-beatnik-glasses-goatee-manbun-512.png",
+            },
+        ]
     },
     {
         "eventId": 5,
@@ -721,13 +793,26 @@ export const eventMock = [
         "projectTitle": "Agrobairros",
         "userId": 30,
         "username": "Ellias Santana",
-        "posts": [
+        "users": [
             {
-                "postId": 2,
-                "postTitle": "Fevereiro Agro: Eventos do projeto Agrobairros na Vila Conquista",
-                "postImage": "https://alimentandolaciencia.esciencia.es/wp-content/uploads/2020/05/huerto_port.jpg",
+                "userId": 5,
+                "username": "Leonardo Silva",
+                "userImage": "https://cdn0.iconfinder.com/data/icons/diversity-avatars-vol-4/64/hipster-man-caucasian-beard-512.png",
             },
-        ],
+            {
+                "userId": 6,
+                "username": "Raquel Silva",
+                "userImage": "https://cdn0.iconfinder.com/data/icons/diversity-avatars-vol-4/64/woman-round-glasses-hair-bun-512.png",
+            },
+            {
+                "userId": 13,
+                "username": "Pietra Silva",
+            },
+            {
+                "userId": 14,
+                "username": "Rafael Silva",
+            },
+        ]
     },
     {
         "eventId": 6,
@@ -741,13 +826,32 @@ export const eventMock = [
         "projectTitle": "Agrobairros",
         "userId": 30,
         "username": "Ellias Santana",
-        "posts": [
+        "users": [
             {
-                "postId": 2,
-                "postTitle": "Fevereiro Agro: Eventos do projeto Agrobairros na Vila Conquista",
-                "postImage": "https://alimentandolaciencia.esciencia.es/wp-content/uploads/2020/05/huerto_port.jpg",
+                "userId": 8,
+                "username": "Ellioth Almeida",
+                "userImage": "https://cdn0.iconfinder.com/data/icons/diversity-v2-0-volume-08/64/asian-beatnik-glasses-goatee-manbun-512.png",
             },
-        ],
+            {
+                "userId": 9,
+                "username": "Apollo Santos",
+                "userImage": "https://cdn0.iconfinder.com/data/icons/diversity-avatars-vol-4/64/farmer-man-caucasian-overalls-512.png",
+            },
+            {
+                "userId": 10,
+                "username": "Gutierry Santos",
+                "userImage": "https://cdn2.iconfinder.com/data/icons/health-care-and-first-responders/64/doctor-asian-male-coronavirus-512.png",
+            },
+            {
+                "userId": 11,
+                "username": "Júlio Mendes",
+            },
+            {
+                "userId": 12,
+                "username": "Elenora Lima",
+            },
+
+        ]
     },
     {
         "eventId": 7,
@@ -761,13 +865,31 @@ export const eventMock = [
         "projectTitle": "Agrobairros",
         "userId": 30,
         "username": "Ellias Santana",
-        "posts": [
+        "users": [
             {
-                "postId": 2,
-                "postTitle": "Fevereiro Agro: Eventos do projeto Agrobairros na Vila Conquista",
-                "postImage": "https://alimentandolaciencia.esciencia.es/wp-content/uploads/2020/05/huerto_port.jpg",
+                "userId": 4,
+                "username": "Anna Rocha",
+                "userImage": "https://cdn2.iconfinder.com/data/icons/diversity-v2-0-volume-01/64/artist-asian-female-512.png",
             },
-        ],
+            {
+                "userId": 5,
+                "username": "Leonardo Silva",
+                "userImage": "https://cdn0.iconfinder.com/data/icons/diversity-avatars-vol-4/64/hipster-man-caucasian-beard-512.png",
+            },
+            {
+                "userId": 10,
+                "username": "Gutierry Santos",
+                "userImage": "https://cdn2.iconfinder.com/data/icons/health-care-and-first-responders/64/doctor-asian-male-coronavirus-512.png",
+            },
+            {
+                "userId": 11,
+                "username": "Júlio Mendes",
+            },
+            {
+                "userId": 12,
+                "username": "Elenora Lima",
+            },
+        ]
     },
     {
         "eventId": 8,
@@ -781,13 +903,35 @@ export const eventMock = [
         "projectTitle": "Agrobairros",
         "userId": 30,
         "username": "Ellias Santana",
-        "posts": [
+        "users": [
             {
-                "postId": 2,
-                "postTitle": "Fevereiro Agro: Eventos do projeto Agrobairros na Vila Conquista",
-                "postImage": "https://alimentandolaciencia.esciencia.es/wp-content/uploads/2020/05/huerto_port.jpg",
+                "userId": 5,
+                "username": "Leonardo Silva",
+                "userImage": "https://cdn0.iconfinder.com/data/icons/diversity-avatars-vol-4/64/hipster-man-caucasian-beard-512.png",
             },
-        ],
+            {
+                "userId": 6,
+                "username": "Raquel Silva",
+                "userImage": "https://cdn0.iconfinder.com/data/icons/diversity-avatars-vol-4/64/woman-round-glasses-hair-bun-512.png",
+            },
+            {
+                "userId": 7,
+                "username": "Lyanne Almeida",
+                "userImage": "https://cdn2.iconfinder.com/data/icons/health-care-and-first-responders/64/ems-black-female-coronavirus-512.png",
+            },
+            {
+                "userId": 13,
+                "username": "Pietra Silva",
+            },
+            {
+                "userId": 14,
+                "username": "Rafael Silva",
+            },
+            {
+                "userId": 15,
+                "username": "Mary Gomes",
+            },
+        ]
     },
     {
         "eventId": 9,
@@ -801,13 +945,31 @@ export const eventMock = [
         "projectTitle": "Gestão de Recursos Hídricos",
         "userId": 35,
         "username": "Victoria Lima",
-        "posts": [
+        "users": [
             {
-                "postId": 3,
-                "postTitle": "Projeto Gestão de Recursos Hídricos promove eventos no mês de janeiro",
-                "postImage": "https://img.freepik.com/fotos-premium/um-sistema-de-coleta-de-agua-da-chuva-com-um-tanque-de-agua-e-unidade-de-filtragem-generative-ai_390829-234.jpg",
+                "userId": 16,
+                "username": "Felipe Santana",
             },
-        ],
+            {
+                "userId": 17,
+                "username": "Lorenzo Santos",
+            },
+            {
+                "userId": 18,
+                "username": "Elizabeth Valle",
+                "userImage": "https://cdn2.iconfinder.com/data/icons/health-care-and-first-responders/64/ems-black-female-coronavirus-512.png",
+            },
+            {
+                "userId": 19,
+                "username": "Isabelle Mendes",
+                "userImage": "https://cdn2.iconfinder.com/data/icons/diversity-v2-0-volume-01/64/accountant-asian-female-512.png",
+            },
+            {
+                "userId": 20,
+                "username": "Albert Almeida",
+                "userImage": "https://cdn2.iconfinder.com/data/icons/diversity-avatars-volume-09/64/avatar-boler-suit-african-512.png",
+            },
+        ]
     },
     {
         "eventId": 10,
@@ -821,13 +983,21 @@ export const eventMock = [
         "projectTitle": "Gestão de Recursos Hídricos",
         "userId": 35,
         "username": "Victoria Lima",
-        "posts": [
+        "users": [
             {
-                "postId": 3,
-                "postTitle": "Projeto Gestão de Recursos Hídricos promove eventos no mês de janeiro",
-                "postImage": "https://img.freepik.com/fotos-premium/um-sistema-de-coleta-de-agua-da-chuva-com-um-tanque-de-agua-e-unidade-de-filtragem-generative-ai_390829-234.jpg",
+                "userId": 16,
+                "username": "Felipe Santana",
             },
-        ],
+            {
+                "userId": 17,
+                "username": "Lorenzo Santos",
+            },
+            {
+                "userId": 18,
+                "username": "Elizabeth Valle",
+                "userImage": "https://cdn2.iconfinder.com/data/icons/health-care-and-first-responders/64/ems-black-female-coronavirus-512.png",
+            },
+        ]
     },
     {
         "eventId": 11,
@@ -841,13 +1011,23 @@ export const eventMock = [
         "projectTitle": "Gestão de Recursos Hídricos",
         "userId": 35,
         "username": "Victoria Lima",
-        "posts": [
+        "users": [
             {
-                "postId": 3,
-                "postTitle": "Projeto Gestão de Recursos Hídricos promove eventos no mês de janeiro",
-                "postImage": "https://img.freepik.com/fotos-premium/um-sistema-de-coleta-de-agua-da-chuva-com-um-tanque-de-agua-e-unidade-de-filtragem-generative-ai_390829-234.jpg",
+                "userId": 19,
+                "username": "Isabelle Mendes",
+                "userImage": "https://cdn2.iconfinder.com/data/icons/diversity-v2-0-volume-01/64/accountant-asian-female-512.png",
             },
-        ],
+            {
+                "userId": 20,
+                "username": "Albert Almeida",
+                "userImage": "https://cdn2.iconfinder.com/data/icons/diversity-avatars-volume-09/64/avatar-boler-suit-african-512.png",
+            },
+            {
+                "userId": 21,
+                "username": "Joseph Almeida",
+                "userImage": "https://cdn0.iconfinder.com/data/icons/diversity-avatars-vol-4/64/farmer-man-caucasian-overalls-512.png",
+            },
+        ]
     },
 
     {
@@ -862,13 +1042,23 @@ export const eventMock = [
         "projectTitle": "Arquitetura Sustentável",
         "userId": 2,
         "username": "Ryan Azevedo",
-        "posts": [
+        "users": [
             {
-                "postId": 4,
-                "postTitle": "Eventos do Projeto Arquitetura Sustentável Realizados no Mês de Janeiro",
-                "postImage": "https://tinytinswastemanagement.com.au/wp-content/uploads/2024/02/Recycled-materials-in-construction.jpg",
+                "userId": 22,
+                "username": "Igniz Javier",
+                "userImage": "https://cdn0.iconfinder.com/data/icons/diversity-avatars-vol-4/64/hipster-man-caucasian-beard-512.png",
             },
-        ],
+            {
+                "userId": 23,
+                "username": "Billy Castro",
+                "userImage": "https://cdn0.iconfinder.com/data/icons/diversity-v2-0-volume-08/64/asian-beatnik-glasses-goatee-manbun-512.png",
+            },
+            {
+                "userId": 24,
+                "username": "Luccas Matos",
+                "userImage": "https://cdn1.iconfinder.com/data/icons/diversity-avatars-volume-01-v2/64/hipster-man-white-512.png",
+            },
+        ]
     },
     {
         "eventId": 13,
@@ -882,13 +1072,28 @@ export const eventMock = [
         "projectTitle": "Arquitetura Sustentável",
         "userId": 2,
         "username": "Ryan Azevedo",
-        "posts": [
+        "users": [
             {
-                "postId": 4,
-                "postTitle": "Eventos do Projeto Arquitetura Sustentável Realizados no Mês de Janeiro",
-                "postImage": "https://tinytinswastemanagement.com.au/wp-content/uploads/2024/02/Recycled-materials-in-construction.jpg",
+                "userId": 23,
+                "username": "Billy Castro",
+                "userImage": "https://cdn0.iconfinder.com/data/icons/diversity-v2-0-volume-08/64/asian-beatnik-glasses-goatee-manbun-512.png",
             },
-        ],
+            {
+                "userId": 24,
+                "username": "Luccas Matos",
+                "userImage": "https://cdn1.iconfinder.com/data/icons/diversity-avatars-volume-01-v2/64/hipster-man-white-512.png",
+            },
+            {
+                "userId": 25,
+                "username": "Ângela Pinho",
+                "userImage": "https://cdn2.iconfinder.com/data/icons/diversity-v2-0-volume-01/64/artist-asian-female-512.png",
+            },
+            {
+                "userId": 26,
+                "username": "Sebastião Castro",
+                "userImage": "https://cdn2.iconfinder.com/data/icons/health-care-and-first-responders/64/doctor-asian-male-coronavirus-512.png",
+            },
+        ]
     },
     {
         "eventId": 14,
@@ -902,13 +1107,26 @@ export const eventMock = [
         "projectTitle": "Reflorestamento",
         "userId": 2,
         "username": "Ryan Azevedo",
-        "posts": [
+        "users": [
             {
-                "postId": 5,
-                "postTitle": "Projeto Reflorestamento Promove Atividades Especiais em Março para a Zona Florestal de Caxias",
-                "postImage": "https://sitesustentavel.com.br/wp-content/uploads/2019/05/sh_reflorestamento_1017124489.jpg",
+                "userId": 25,
+                "username": "Ângela Pinho",
+                "userImage": "https://cdn2.iconfinder.com/data/icons/diversity-v2-0-volume-01/64/artist-asian-female-512.png",
             },
-        ],
+            {
+                "userId": 26,
+                "username": "Sebastião Castro",
+                "userImage": "https://cdn2.iconfinder.com/data/icons/health-care-and-first-responders/64/doctor-asian-male-coronavirus-512.png",
+            },
+            {
+                "userId": 27,
+                "username": "Osvald Castro",
+            },
+            {
+                "userId": 28,
+                "username": "Joel Castro",
+            },
+        ]
     },
     {
         "eventId": 15,
@@ -922,13 +1140,25 @@ export const eventMock = [
         "projectTitle": "Reflorestamento",
         "userId": 2,
         "username": "Ryan Azevedo",
-        "posts": [
+        "users": [
             {
-                "postId": 5,
-                "postTitle": "Projeto Reflorestamento Promove Atividades Especiais em Março para a Zona Florestal de Caxias",
-                "postImage": "https://sitesustentavel.com.br/wp-content/uploads/2019/05/sh_reflorestamento_1017124489.jpg",
+                "userId": 27,
+                "username": "Osvald Castro",
             },
-        ],
+            {
+                "userId": 28,
+                "username": "Joel Castro",
+            },
+            {
+                "userId": 29,
+                "username": "Rose Santana",
+            },
+            {
+                "userId": 30,
+                "username": "Ellias Santana",
+                "userImage": "https://cdn3.iconfinder.com/data/icons/diversity-avatars/64/catholic-priest-white-256.png",
+            },
+        ]
     },
     {
         "eventId": 16,
@@ -942,13 +1172,27 @@ export const eventMock = [
         "projectTitle": "Reurbanização",
         "userId": 2,
         "username": "Ryan Azevedo",
-        "posts": [
+        "users": [
             {
-                "postId": 6,
-                "postTitle": "Projeto Reurbanização Promove Discussões e Soluções para Agosto",
-                "postImage": "https://farm3.staticflickr.com/2906/14341645574_b6c583dce2_b.jpg",
+                "userId": 31,
+                "username": "Helena Silveira",
+                "userImage": "https://cdn4.iconfinder.com/data/icons/diversity-v2-0-volume-05/64/woman-tee-shirt-african-512.png",
             },
-        ],
+            {
+                "userId": 32,
+                "username": "Admin",
+                "userImage": "https://cdn1.iconfinder.com/data/icons/user-112/24/setting_account_admin_role_setup_system_settings_user_profile_people_options-512.png",
+            },
+            {
+                "userId": 33,
+                "username": "Fenanda Rocha",
+                "userImage": "https://cdn2.iconfinder.com/data/icons/diversity-v2-0-volume-01/64/accountant-asian-female-512.png",
+            },
+            {
+                "userId": 34,
+                "username": "Victoria Lima",
+            },
+        ]
     },
     {
         "eventId": 17,
@@ -962,13 +1206,27 @@ export const eventMock = [
         "projectTitle": "Reurbanização",
         "userId": 2,
         "username": "Ryan Azevedo",
-        "posts": [
+        "users": [
             {
-                "postId": 6,
-                "postTitle": "Projeto Reurbanização Promove Discussões e Soluções para Agosto",
-                "postImage": "https://farm3.staticflickr.com/2906/14341645574_b6c583dce2_b.jpg",
+                "userId": 29,
+                "username": "Rose Santana",
             },
-        ],
+            {
+                "userId": 30,
+                "username": "Ellias Santana",
+                "userImage": "https://cdn3.iconfinder.com/data/icons/diversity-avatars/64/catholic-priest-white-256.png",
+            },
+            {
+                "userId": 31,
+                "username": "Helena Silveira",
+                "userImage": "https://cdn4.iconfinder.com/data/icons/diversity-v2-0-volume-05/64/woman-tee-shirt-african-512.png",
+            },
+            {
+                "userId": 32,
+                "username": "Admin",
+                "userImage": "https://cdn1.iconfinder.com/data/icons/user-112/24/setting_account_admin_role_setup_system_settings_user_profile_people_options-512.png",
+            },
+        ]
     },
     {
         "eventId": 18,
@@ -982,13 +1240,27 @@ export const eventMock = [
         "projectTitle": "Preservação de Bairros Históricos",
         "userId": 1,
         "username": "James Azevedo",
-        "posts": [
+        "users": [
             {
-                "postId": 7,
-                "postTitle": "Preservação de Bairros Históricos Promove Iniciativas em Outubro para Valorizar a Cultura de Caxias",
-                "postImage": "https://4.bp.blogspot.com/-hRWonuqRb3M/UgwbHZTzwcI/AAAAAAAABBg/nzBj12JpyK0/s1600/SAM_2669.JPG",
+                "userId": 31,
+                "username": "Helena Silveira",
+                "userImage": "https://cdn4.iconfinder.com/data/icons/diversity-v2-0-volume-05/64/woman-tee-shirt-african-512.png",
             },
-        ],
+            {
+                "userId": 32,
+                "username": "Admin",
+                "userImage": "https://cdn1.iconfinder.com/data/icons/user-112/24/setting_account_admin_role_setup_system_settings_user_profile_people_options-512.png",
+            },
+            {
+                "userId": 33,
+                "username": "Fenanda Rocha",
+                "userImage": "https://cdn2.iconfinder.com/data/icons/diversity-v2-0-volume-01/64/accountant-asian-female-512.png",
+            },
+            {
+                "userId": 34,
+                "username": "Victoria Lima",
+            },
+        ]
     },
     {
         "eventId": 19,
@@ -1002,13 +1274,6 @@ export const eventMock = [
         "projectTitle": "Preservação de Bairros Históricos",
         "userId": 1,
         "username": "James Azevedo",
-        "posts": [
-            {
-                "postId": 7,
-                "postTitle": "Preservação de Bairros Históricos Promove Iniciativas em Outubro para Valorizar a Cultura de Caxias",
-                "postImage": "https://4.bp.blogspot.com/-hRWonuqRb3M/UgwbHZTzwcI/AAAAAAAABBg/nzBj12JpyK0/s1600/SAM_2669.JPG",
-            },
-        ],
     },
     {
         "eventId": 20,
@@ -1022,13 +1287,7 @@ export const eventMock = [
         "projectTitle": "Artes Visuais",
         "userId": 1,
         "username": "James Azevedo",
-        "posts": [
-            {
-                "postId": 8,
-                "postTitle": "Projeto Artes Visuais Traz Criatividade e Identidade Cultural ao Bairro Multirão em Novembro",
-                "postImage": "https://lereaprender.com.br/wp-content/uploads/2020/03/arte.jpg",
-            },
-        ],
+        
     },
     {
         "eventId": 21,
@@ -1042,13 +1301,6 @@ export const eventMock = [
         "projectTitle": "Artes Visuais",
         "userId": 1,
         "username": "James Azevedo",
-        "posts": [
-            {
-                "postId": 8,
-                "postTitle": "Projeto Artes Visuais Traz Criatividade e Identidade Cultural ao Bairro Multirão em Novembro",
-                "postImage": "https://lereaprender.com.br/wp-content/uploads/2020/03/arte.jpg",
-            },
-        ],
     },
     {
         "eventId": 22,
@@ -1062,13 +1314,6 @@ export const eventMock = [
         "projectTitle": "Energias Renováveis",
         "userId": 1,
         "username": "James Azevedo",
-        "posts": [
-            {
-                "postId": 9,
-                "postTitle": "Projeto Energias Renováveis Traz Iniciativas de Inovação e Inclusão em Julho",
-                "postImage": "https://revistanuevasenergias.com/wp-content/uploads/2019/10/0036678781.jpg",
-            },
-        ],
     },
     {
         "eventId": 23,
@@ -1082,13 +1327,6 @@ export const eventMock = [
         "projectTitle": "Energias Renováveis",
         "userId": 1,
         "username": "James Azevedo",
-        "posts": [
-            {
-                "postId": 9,
-                "postTitle": "Projeto Energias Renováveis Traz Iniciativas de Inovação e Inclusão em Julho",
-                "postImage": "https://revistanuevasenergias.com/wp-content/uploads/2019/10/0036678781.jpg",
-            },
-        ],
     },
     {
         "eventId": 24,
@@ -1102,13 +1340,18 @@ export const eventMock = [
         "projectTitle": "História da Cidade",
         "userId": 5,
         "username": "Leonardo Silva",
-        "posts": [
+        "users": [
             {
-                "postId": 10,
-                "postTitle": "Projeto História da Cidade Promove Reflexões sobre o Passado de Caxias em Dezembro",
-                "postImage": "https://wallpaperaccess.com/full/1667843.jpg",
+                "userId": 1,
+                "username": "James Azevedo",
+                "userImage": "https://cdn0.iconfinder.com/data/icons/diversity-v2-0-volume-08/64/asian-beatnik-glasses-goatee-manbun-512.png",
             },
-        ],
+            {
+                "userId": 2,
+                "username": "Ryan Azevedo",
+                "userImage": "https://cdn2.iconfinder.com/data/icons/diversity-avatars-volume-09/64/avatar-boler-suit-african-512.png",
+            },
+        ]
     },
     {
         "eventId": 25,
@@ -1122,13 +1365,23 @@ export const eventMock = [
         "projectTitle": "História da Cidade",
         "userId": 6,
         "username": "Raquel Silva",
-        "posts": [
+        "users": [
             {
-                "postId": 10,
-                "postTitle": "Projeto História da Cidade Promove Reflexões sobre o Passado de Caxias em Dezembro",
-                "postImage": "https://wallpaperaccess.com/full/1667843.jpg",
+                "userId": 1,
+                "username": "James Azevedo",
+                "userImage": "https://cdn0.iconfinder.com/data/icons/diversity-v2-0-volume-08/64/asian-beatnik-glasses-goatee-manbun-512.png",
             },
-        ],
+            {
+                "userId": 2,
+                "username": "Ryan Azevedo",
+                "userImage": "https://cdn2.iconfinder.com/data/icons/diversity-avatars-volume-09/64/avatar-boler-suit-african-512.png",
+            },
+            {
+                "userId": 3,
+                "username": "Francis Rocha",
+                "userImage": "https://cdn2.iconfinder.com/data/icons/diversity-v2-0-volume-01/64/accountant-asian-female-512.png",
+            },
+        ]
     },
 ]
 
@@ -1594,6 +1847,7 @@ export const userMock = [
     {
         "id": 18,
         "username": "Elizabeth Valle",
+        "userImage": "https://cdn2.iconfinder.com/data/icons/health-care-and-first-responders/64/ems-black-female-coronavirus-512.png",
         "email": "elizabeth@gmail.com",
         "password": "12345678",
         "createdDate": "26/10/2024"
@@ -1601,6 +1855,7 @@ export const userMock = [
     {
         "id": 19,
         "username": "Isabelle Mendes",
+        "userImage": "https://cdn2.iconfinder.com/data/icons/diversity-v2-0-volume-01/64/accountant-asian-female-512.png",
         "email": "isabelle@gmail.com",
         "password": "12345678",
         "createdDate": "26/10/2024"
@@ -1608,6 +1863,7 @@ export const userMock = [
     {
         "id": 20,
         "username": "Albert Almeida",
+        "userImage": "https://cdn2.iconfinder.com/data/icons/diversity-avatars-volume-09/64/avatar-boler-suit-african-512.png",
         "email": "albert@gmail.com",
         "password": "12345678",
         "createdDate": "26/10/2024"
@@ -1615,6 +1871,7 @@ export const userMock = [
     {
         "id": 21,
         "username": "Joseph Almeida",
+        "userImage": "https://cdn0.iconfinder.com/data/icons/diversity-avatars-vol-4/64/farmer-man-caucasian-overalls-512.png",
         "email": "joseph@gmail.com",
         "password": "12345678",
         "createdDate": "26/10/2024"
@@ -1622,6 +1879,7 @@ export const userMock = [
     {
         "id": 22,
         "username": "Igniz Javier",
+        "userImage": "https://cdn0.iconfinder.com/data/icons/diversity-avatars-vol-4/64/hipster-man-caucasian-beard-512.png",
         "email": "igniz@gmail.com",
         "password": "12345678",
         "createdDate": "26/10/2024"
@@ -1629,6 +1887,7 @@ export const userMock = [
     {
         "id": 23,
         "username": "Billy Castro",
+        "userImage": "https://cdn0.iconfinder.com/data/icons/diversity-v2-0-volume-08/64/asian-beatnik-glasses-goatee-manbun-512.png",
         "email": "billy@gmail.com",
         "password": "12345678",
         "createdDate": "26/10/2024"
@@ -1636,6 +1895,7 @@ export const userMock = [
     {
         "id": 24,
         "username": "Luccas Matos",
+        "userImage": "https://cdn1.iconfinder.com/data/icons/diversity-avatars-volume-01-v2/64/hipster-man-white-512.png",
         "email": "luccas@gmail.com",
         "password": "12345678",
         "createdDate": "26/10/2024"
@@ -1643,6 +1903,7 @@ export const userMock = [
     {
         "id": 25,
         "username": "Ângela Pinho",
+        "userImage": "https://cdn2.iconfinder.com/data/icons/diversity-v2-0-volume-01/64/artist-asian-female-512.png",
         "email": "angelica@gmail.com",
         "password": "12345678",
         "createdDate": "26/10/2024"
@@ -1650,6 +1911,7 @@ export const userMock = [
     {
         "id": 26,
         "username": "Sebastião Castro",
+        "userImage": "https://cdn2.iconfinder.com/data/icons/health-care-and-first-responders/64/doctor-asian-male-coronavirus-512.png",
         "email": "sebastiao@gmail.com",
         "password": "12345678",
         "createdDate": "26/10/2024"
@@ -1678,9 +1940,9 @@ export const userMock = [
     {
         "id": 30,
         "username": "Ellias Santana",
+        "userImage": "https://cdn3.iconfinder.com/data/icons/diversity-avatars/64/catholic-priest-white-256.png",
         "email": "ellias@gmail.com",
         "password": "12345678",
-        "userImage": "https://cdn3.iconfinder.com/data/icons/diversity-avatars/64/catholic-priest-white-256.png",
         "userCoverImage": "https://www.fielackelectric.com/wp-content/uploads/2022/02/prlx-1-1-1024x410-1.jpg",
         "userBio": "Um dedicado engenheiro agrônomo residente em Caxias, Maranhão. Graduado em Engenharia Agronômica pela Universidade Federal do Maranhão, sempre tive uma paixão pelo cultivo sustentável e pelas práticas agrícolas que promovem a harmonia entre o homem e a natureza.\n\nAo longo de minha carreira, tenho me destacado pelo meu compromisso com a inovação e a sustentabilidade no setor agrícola. Sou um dos principais colaboradores do projeto Agrobairros em Caxias, onde atuo como consultor e mentor para os agricultores locais. \n\nAcredito firmemente que a educação e a troca de conhecimentos são fundamentais para o sucesso da agricultura urbana. Frequentemente organizo palestras e workshops para compartilhar minhas experiências e incentivar a adoção de práticas sustentáveis. Além disso, sou reconhecido pela minha habilidade em criar soluções práticas e eficientes para os desafios enfrentados pelos agricultores, sempre buscando melhorar a qualidade e a produtividade das hortas comunitárias.\n\nFora do meu trabalho no projeto Agrobairros, sou um entusiasta da jardinagem e da permacultura, dedicando parte do meu tempo livre ao cultivo de plantas e hortaliças em minha própria casa. Minha dedicação e paixão pela agricultura não só contribuem para o desenvolvimento sustentável de Caxias, mas também inspiram a comunidade a valorizar e preservar o meio ambiente.\n\nBusco cada vez mais me tornar uma figura de valor no movimento de agricultura urbana em Caxias, e meu trabalho contínuo promete trazer ainda mais avanços e benefícios para a comunidade local.",
         "userLocation": "Trizidela",
@@ -1689,9 +1951,9 @@ export const userMock = [
     {
         "id": 31,
         "username": "Helena Silveira",
+        "userImage": "https://cdn4.iconfinder.com/data/icons/diversity-v2-0-volume-05/64/woman-tee-shirt-african-512.png",
         "email": "helena@gmail.com",
         "password": "12345678",
-        "userImage": "https://cdn4.iconfinder.com/data/icons/diversity-v2-0-volume-05/64/woman-tee-shirt-african-512.png",
         "userCoverImage": "https://wallpaperaccess.com/full/553184.jpg",
         "userBio": "Sou Helena Silveira, uma paisagista residente em Caxias. Desde cedo, sempre fui fascinada pela beleza e pela harmonia da natureza, o que me levou a seguir a carreira de paisagismo. Graduei-me em Arquitetura Paisagista pela Universidade Estadual do Maranhão e, desde então, venho dedicando minha vida profissional à criação de espaços verdes sustentáveis e esteticamente agradáveis.\n\nAtualmente, sou uma colaboradora ativa do projeto Agrobairros em Caxias, onde aplico minhas habilidades e conhecimentos para transformar hortas comunitárias e áreas urbanas em espaços verdes vibrantes. Minha experiência abrange desde o planejamento e a design de jardins até a implementação de técnicas de paisagismo que promovem a sustentabilidade e a biodiversidade.\n\nAcredito firmemente que o paisagismo pode desempenhar um papel vital na melhoria da qualidade de vida das pessoas e no fortalecimento das comunidades. No projeto Agrobairros, trabalho em estreita colaboração com agricultores e moradores locais, oferecendo orientações e suporte na criação e manutenção de hortas e jardins. Além disso, organizo workshops e palestras para compartilhar meus conhecimentos e incentivar a adoção de práticas paisagísticas sustentáveis.\n\nFora do meu trabalho no projeto Agrobairros, sou uma entusiasta da jardinagem e adoro passar meu tempo livre cultivando plantas e flores em meu próprio jardim. Minha paixão pela natureza e pelo paisagismo não só contribui para a criação de espaços mais verdes e saudáveis em Caxias, mas também inspira outras pessoas a valorizar e proteger o meio ambiente.\n\nEu, Helena Silveira, sou dedicada a transformar o ambiente urbano de Caxias em um lugar mais verde e harmonioso, e meu trabalho contínuo no projeto Agrobairros promete trazer ainda mais benefícios e beleza para a comunidade local.",
         "userLocation": "Campo de Belém",
@@ -1700,26 +1962,26 @@ export const userMock = [
     {
         "id": 32,
         "username": "Admin",
+        "userImage": "https://cdn1.iconfinder.com/data/icons/user-112/24/setting_account_admin_role_setup_system_settings_user_profile_people_options-512.png",
         "email": "admin@admin.com",
         "password": "12345678",
-        "userImage": "https://cdn1.iconfinder.com/data/icons/user-112/24/setting_account_admin_role_setup_system_settings_user_profile_people_options-512.png",
         "userCoverImage": "https://wallpapercave.com/wp/wp4009383.jpg",
         "userBio": "Tenho 24 anos, sou formado em Análise e Desenvolvimento de Sistemas (ADS) e especializado em desenvolvimento web backend. Busco aprimorar cada vez mais os meus conhecimentos em novas tecnologias e ideias inovadoras afim de beneficiar o progresso da minha cidade natal. Sempre morei em Caxias, Maranhão, Após concluir seu curso superior em ADS, ele decidiu focar sua carreira no desenvolvimento web backend com Java Spring, assim como também melhorei minhas habilidades em frontend com Typescript e ReactJS, esta poderosa Stack de ferramentas e tecnologias me permitiu encontrar caminhos fantásticos par aum desenvolvimento criativo e inovador. Eu acredito que a tecnologia pode ser uma força incomensurável para a evolução e o bem social. É válido notar que inclusão digital pode ser um caminho mais benéfico e eficiente na integração local. Portanto, busco colaborar com grupos e organizações para implementar soluções tecnológicas que atendam às necessidades específicas de Caxias.\n\n",
         "userLocation": "João Viana",
         "createdDate": "27/01/2025"
     },
     {
-        "id": 34,
-        "username": "Francis Rocha",
-        "email": "francis@gmail.com",
-        "password": "12345678",
+        "id": 33,
+        "username": "Fenanda Rocha",
         "userImage": "https://cdn2.iconfinder.com/data/icons/diversity-v2-0-volume-01/64/accountant-asian-female-512.png",
+        "email": "fernanda@gmail.com",
+        "password": "12345678",
         "userBio": "Engenheira ambiental apaixonada pela preservação do meio ambiente me levou a cursar Engenharia Ambiental na Universidade Federal do Maranhão, onde aprendi a desenvolver soluções que equilibram a proteção ambiental com as necessidades da sociedade.\n\nAtualmente, colaboro com o projeto Agrobairros, aplicando meus conhecimentos para promover práticas sustentáveis e garantir que o cultivo nas hortas comunitárias seja realizado de forma responsável e ambientalmente consciente. Minha atuação envolve desde a análise da qualidade do solo e da água até o planejamento de estratégias para reduzir impactos ambientais e aumentar a eficiência dos recursos.\n",
         "userLocation": "Morro do Alecrim",
         "createdDate": "11/03/2025"
     },
     {
-        "id": 35,
+        "id": 34,
         "username": "Victoria Lima",
         "email": "victoria@gmail.com",
         "password": "12345678",
