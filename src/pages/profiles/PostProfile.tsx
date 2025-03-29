@@ -4,13 +4,12 @@ import { useState } from "react";
 import * as FaIcons from "react-icons/fa6";
 import { Props } from "resources";
 import { Link, useNavigate, useParams } from "react-router-dom";
-import axios from "axios";
-import { baseUrl } from "utils/requests";
 import { PostEditForm, EventPostAddForm } from "pages/forms/PostForm";
 import { EventSmCard } from "components/cards/EventCard";
 import { PostSmCard } from "components/cards/PostCard";
 import { CustomMarkdown } from "components/shared/Template";
 import { eventPostMock, postMock } from "mock/MockData";
+import { useNotification } from "components/shared/Notification";
 
 
 export function PostProfile() {
@@ -21,6 +20,7 @@ export function PostProfile() {
 
     function PostDetails({ params: postId }: Props) {
         const navigate = useNavigate();
+        const notification = useNotification();
         const [edit, setEdit] = useState(false);
         const [deleteModal, setDeleteModal] = useState(false);
         const [addEvent, setAddEvent] = useState(false);
@@ -30,11 +30,9 @@ export function PostProfile() {
         const events = eventPostMock.filter(x => x.postId.toString() === postId);
         
         const deletePost = () => {
-            axios.delete(`${baseUrl}/posts/delete/${postId}`)
-                .then((response) => {
-                    navigate("/postagens");
-                    return response.status;
-                })
+            setDeleteModal(false)
+            navigate("/postagens")
+            notification.notify("Deletado com sucesso!", "success");
         }
 
 

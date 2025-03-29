@@ -1,14 +1,13 @@
 import { FieldError, useNotification } from "components/shared/Notification";
-import { useAuth } from "resources/auth";
 import { Post } from "resources/post";
 import { Breadcrumb, Button, Label, Textarea, TextInput } from "flowbite-react";
 import { useFormik } from "formik";
 import { FaCalendarCheck, FaHouse, FaNewspaper, FaX } from "react-icons/fa6";
 import { Link, useNavigate } from "react-router-dom";
-import { Login } from "./UserForm";
 import * as Yup from "yup";
 import { Props } from "resources";
 import { eventMock } from "mock/MockData";
+import { EventPost } from "resources/event";
 
 export const postValidationSchema = Yup.object().shape({
     postTitle: Yup.string()
@@ -29,17 +28,11 @@ export const postValidationSchema = Yup.object().shape({
 
 export function PostAddForm() {
     const notification = useNotification();
-    const auth = useAuth();
-    const userId = auth.getUserSession()?.id;
     const navigate = useNavigate();
 
-    const { values, handleChange, errors, resetForm } = useFormik<Post>({
+    const { handleChange, errors, resetForm } = useFormik<Post>({
         initialValues: {
-            postTitle: "",
-            postDescription: "",
-            postSummary: "",
-            postImage: "",
-            userId: 0,
+            postId: 0,
         },
         validationSchema: postValidationSchema,
         onSubmit: onSubmit
@@ -77,20 +70,11 @@ export function PostAddForm() {
                     </div>
                     <form onSubmit={onSubmit} className="space-y-2 w-full md:w-2/3">
                         <div>
-                            <TextInput
-                                type="hidden"
-                                id="userId"
-                                onChange={handleChange}
-                                value={userId}
-                            />
-                        </div>
-                        <div>
                             <Label className="block text-sm font-medium leading-6 text-gray-700" value="Título: *" />
                             <TextInput
                                 color="bg-zinc-400"
                                 id="postTitle"
                                 onChange={handleChange}
-                                value={values.postTitle}
                             />
                             <FieldError error={errors.postTitle} />
                         </div>
@@ -100,7 +84,6 @@ export function PostAddForm() {
                                 color="bg-zinc-400"
                                 id="postImage"
                                 onChange={handleChange}
-                                value={values.postImage}
                             />
                         </div>
                         <div>
@@ -109,7 +92,6 @@ export function PostAddForm() {
                                 color="bg-zinc-400"
                                 id="postSummary"
                                 onChange={handleChange}
-                                value={values.postSummary}
                             />
                             <FieldError error={errors.postSummary} />
                         </div>
@@ -119,7 +101,6 @@ export function PostAddForm() {
                                 color="bg-zinc-400"
                                 id="postDescription"
                                 onChange={handleChange}
-                                value={values.postDescription}
                             />
                             <FieldError error={errors.postDescription} />
                         </div>
@@ -137,17 +118,11 @@ export function PostAddForm() {
 
 export function PostEditForm({ params: postId }: Props) {
     const notification = useNotification();
-    const auth = useAuth();
-    const userId = auth.getUserSession()?.id;
     const navigate = useNavigate();
 
-    const { values, handleChange, resetForm, errors } = useFormik<Post>({
+    const { handleChange, resetForm, errors } = useFormik<Post>({
         initialValues: {
-            postId: postId,
-            postTitle: "",
-            postDescription: "",
-            postImage: "",
-            postSummary: "",
+            postId: postId
         },
         validationSchema: postValidationSchema,
         onSubmit: onSubmit
@@ -159,66 +134,61 @@ export function PostEditForm({ params: postId }: Props) {
     }
     return (
         <>
-                <div className="flex flex-col items-center justify-center">
-                    <div className="flex flex-row justify-between items-center text-xl font-semibold tracking-tight text-gray-700 mb-3 w-full md:w-2/3">
-                        <span className="flex flex-row items-center gap-2"><FaNewspaper /> Editar Postagem </span>
-                        <FaX onClick={() => navigate(0)} className="hover:shadow-xl cursor-pointer rounded-full  p-1 border hover:bg-gray-300 text-2xl" />
-                    </div>
-                    <form onSubmit={onSubmit} className="space-y-2 w-full md:w-2/3">
-                        <div>
-                            <TextInput
-                                type="hidden"
-                                id="userId"
-                                onChange={handleChange}
-                                value={userId}
-                            />
-                        </div>
-                        <div>
-                            <Label className="block text-sm font-medium leading-6 text-gray-700" value="Título: *" />
-                            <TextInput
-                                color="bg-zinc-400"
-                                id="postTitle"
-                                onChange={handleChange}
-                                value={values.postTitle}
-                            />
-                            <FieldError error={errors.postTitle} />
-                        </div>
-                        <div>
-                            <Label className="block text-sm font-medium leading-6 text-gray-700" value="Url de Imagem: " />
-                            <TextInput
-                                color="bg-zinc-400"
-                                id="postImage"
-                                onChange={handleChange}
-                                value={values.postImage}
-                            />
-                        </div>
-                        <div>
-                            <Label className="block text-sm font-medium leading-6 text-gray-700" value="Resumo: *" />
-                            <Textarea
-                                className="h-[160px]"
-                                color="bg-zinc-400"
-                                id="postSummary"
-                                onChange={handleChange}
-                                value={values.postSummary}
-                            />
-                            <FieldError error={errors.postSummary} />
-                        </div>
-                        <div>
-                            <Label className="block text-sm font-medium leading-6 text-gray-700" value="Descrição: *" />
-                            <Textarea
-                                className="h-[160px]"
-                                color="bg-zinc-400"
-                                id="postDescription"
-                                onChange={handleChange}
-                                value={values.postDescription}
-                            />
-                        </div>
-
-                        <div className="mt-5 flex items-center justify-end gap-x-4">
-                            <Button type="submit" gradientDuoTone="purpleToBlue">Salvar</Button>
-                        </div>
-                    </form>
+            <div className="flex flex-col items-center justify-center">
+                <div className="flex flex-row justify-between items-center text-xl font-semibold tracking-tight text-gray-700 mb-3 w-full md:w-2/3">
+                    <span className="flex flex-row items-center gap-2"><FaNewspaper /> Editar Postagem </span>
+                    <FaX onClick={() => navigate(0)} className="hover:shadow-xl cursor-pointer rounded-full  p-1 border hover:bg-gray-300 text-2xl" />
                 </div>
+                <form onSubmit={onSubmit} className="space-y-2 w-full md:w-2/3">
+                    <div>
+                        <TextInput
+                            type="hidden"
+                            id="userId"
+                            onChange={handleChange}
+                        />
+                    </div>
+                    <div>
+                        <Label className="block text-sm font-medium leading-6 text-gray-700" value="Título: *" />
+                        <TextInput
+                            color="bg-zinc-400"
+                            id="postTitle"
+                            onChange={handleChange}
+                        />
+                        <FieldError error={errors.postTitle} />
+                    </div>
+                    <div>
+                        <Label className="block text-sm font-medium leading-6 text-gray-700" value="Url de Imagem: " />
+                        <TextInput
+                            color="bg-zinc-400"
+                            id="postImage"
+                            onChange={handleChange}
+                        />
+                    </div>
+                    <div>
+                        <Label className="block text-sm font-medium leading-6 text-gray-700" value="Resumo: *" />
+                        <Textarea
+                            className="h-[160px]"
+                            color="bg-zinc-400"
+                            id="postSummary"
+                            onChange={handleChange}
+                        />
+                        <FieldError error={errors.postSummary} />
+                    </div>
+                    <div>
+                        <Label className="block text-sm font-medium leading-6 text-gray-700" value="Descrição: *" />
+                        <Textarea
+                            className="h-[160px]"
+                            color="bg-zinc-400"
+                            id="postDescription"
+                            onChange={handleChange}
+                        />
+                    </div>
+
+                    <div className="mt-5 flex items-center justify-end gap-x-4">
+                        <Button type="submit" gradientDuoTone="purpleToBlue">Salvar</Button>
+                    </div>
+                </form>
+            </div>
         </>
     );
 }
@@ -227,27 +197,14 @@ export function PostEditForm({ params: postId }: Props) {
 export function EventPostAddForm({ params: postId }: Props) {
 
     const notification = useNotification();
-    const auth = useAuth();
-    const userId = auth.getUserSession()?.id;
-
     const query = "";
 
-    type EventPost = {
-        eventTitle?: string;
-        postId?: number;
-        userId?: number;
-    }
 
-    const { values, handleChange, resetForm } = useFormik<EventPost>({
-        initialValues: {
-            eventTitle: "",
-            postId: 0,
-            userId: 0
-        },
+    const { handleChange, resetForm } = useFormik<EventPost>({
+        initialValues: {postId:postId},
         validationSchema: postValidationSchema,
         onSubmit: onSubmit
     })
-
 
     async function onSubmit() {
         notification.notify("Salvo com sucesso!", "success");
@@ -260,26 +217,13 @@ export function EventPostAddForm({ params: postId }: Props) {
                 <div className="flex flex-row justify-between items-center text-xl font-semibold tracking-tight text-gray-700 mb-3 w-full md:w-2/3">
                     <span className="flex flex-row items-center gap-2"><FaCalendarCheck /> Adicionar Evento </span>
                 </div>
-                <form onSubmit={onSubmit} className="space-y-2 w-full md:w-2/3">
-                    <div>
-                        <TextInput type="hidden"
-                            id="userId"
-                            onChange={handleChange}
-                            value={userId}
-                        />
-                        <TextInput type="hidden"
-                            id="postId"
-                            onChange={handleChange}
-                            value={postId}
-                        />
-                    </div>
+                <form onSubmit={onSubmit} className="space-y-2 w-full md:w-2/3">    
                     <div>
                         <TextInput
                             color="bg-zinc-400"
                             id="eventTitle"
                             list="eventList"
                             onChange={handleChange}
-                            value={values.eventTitle}
                         />
                         <datalist id="eventList">
                             {eventMock.filter((event) =>

@@ -2,7 +2,6 @@
 import { useFormik } from "formik";
 import { useState } from "react";
 import { Button, Label, Textarea, TextInput } from "flowbite-react";
-import { useAuth } from "resources/auth";
 import { useNavigate, useParams } from "react-router-dom";
 import { useNotification, FieldError } from "components/shared/Notification";
 import * as Yup from "yup";
@@ -161,20 +160,11 @@ export function UserEditProfile() {
 
 export function UserEditForm({ params: userId }: Props) {
     const notification = useNotification();
-    const auth = useAuth();
-    userId = auth.getUserSession()?.id;
     const navigate = useNavigate();
 
 
-    const { values, handleChange, resetForm } = useFormik<UserFormProps>({
-        initialValues: {
-            id: userId,
-            username: "",
-            userBio: "",
-            userImage: "",
-            userCoverImage: "",
-            userLocation: ""
-        },
+    const { handleChange, resetForm } = useFormik<UserFormProps>({
+        initialValues: {id: userId},
         validationSchema: userValidationSchema,
         onSubmit: onSubmit
     }
@@ -186,7 +176,6 @@ export function UserEditForm({ params: userId }: Props) {
         navigate(0);
     }
 
-
     return (
         <>
             <div className="flex flex-col items-center justify-center">
@@ -196,20 +185,11 @@ export function UserEditForm({ params: userId }: Props) {
                 </div>
                 <form onSubmit={onSubmit} className="space-y-2 w-2/3 ">
                     <div>
-                        <TextInput
-                            type="hidden"
-                            id="id"
-                            onChange={handleChange}
-                            value={userId}
-                        />
-                    </div>
-                    <div>
                         <Label className="block text-sm font-medium leading-6 text-gray-700" value="Nome de Usuário: " />
                         <TextInput
                             color="bg-zinc-400"
                             id="username"
                             onChange={handleChange}
-                            value={values.username}
                         />
 
                     </div>
@@ -220,7 +200,6 @@ export function UserEditForm({ params: userId }: Props) {
                             color="bg-zinc-400"
                             id="userBio"
                             onChange={handleChange}
-                            value={values.userBio}
                         />
                     </div>
                     <div>
@@ -229,7 +208,6 @@ export function UserEditForm({ params: userId }: Props) {
                             color="bg-zinc-400"
                             id="userImage"
                             onChange={handleChange}
-                            value={values.userImage}
                         />
                     </div>
                     <div>
@@ -238,7 +216,6 @@ export function UserEditForm({ params: userId }: Props) {
                             color="bg-zinc-400"
                             id="userCoverImage"
                             onChange={handleChange}
-                            value={values.userCoverImage}
                         />
                     </div>
                     <div className="mt-2">
@@ -247,7 +224,6 @@ export function UserEditForm({ params: userId }: Props) {
                             color="bg-zinc-400"
                             id="userLocation"
                             onChange={handleChange}
-                            value={values.userLocation}
                         />
                     </div>
                     <div className="mt-5 flex items-center justify-end gap-x-4">

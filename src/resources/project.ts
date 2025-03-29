@@ -9,16 +9,6 @@ export type Project = {
   userImage?: string;
 };
 
-export type ProjectPage = {
-  content: Project[];
-  page: {
-    size?: number;
-    totalElements: number;
-    totalPages?: number;
-    number: number;
-  };
-};
-
 export type ProjectProps = {
   project: Project;
 };

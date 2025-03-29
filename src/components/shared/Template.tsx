@@ -13,11 +13,11 @@ export const removeAccents = (str: any) => {
 export const Header = () => {
 
     const navigate = useNavigate();
-    const userId = 32;
+    const userId = "30";
 
 
     function FindUser() {
-        const userById = userMock.filter(x => x.id === userId);
+        const userById = userMock.filter(x => x.id.toString() === userId);
 
         return (
             <>

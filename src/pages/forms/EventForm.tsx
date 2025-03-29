@@ -2,7 +2,6 @@ import { Breadcrumb, Button, Label, Select, Textarea, TextInput } from "flowbite
 import { FaCalendarCheck, FaHouse, FaX } from "react-icons/fa6";
 import { useNotification, FieldError } from "components/shared/Notification";
 import { useFormik } from "formik";
-import { useAuth } from "resources/auth";
 import { Event } from "resources/event";
 import * as Yup from "yup";
 import { Link, useNavigate } from "react-router-dom";
@@ -24,18 +23,10 @@ export const eventValidationSchema = Yup.object().shape({
 
 export function EventAddForm() {
     const notification = useNotification();
-    const auth = useAuth();
-    const userId = auth.getUserSession()?.id;
     const query = "";
 
-    const { values, handleChange, errors, resetForm } = useFormik<Event>({
+    const { handleChange, errors, resetForm } = useFormik<Event>({
         initialValues: {
-            eventTitle: "",
-            eventDescription: "",
-            eventImage: "",
-            eventDate: "",
-            eventStatus: "",
-            projectTitle: "",
             userId: 0,
         },
         validationSchema: eventValidationSchema,
@@ -77,19 +68,11 @@ export function EventAddForm() {
                     </div>
                     <form onSubmit={onSubmit} className="space-y-2 w-2/3 ">
                         <div>
-                            <TextInput type="hidden"
-                                id="userId"
-                                onChange={handleChange}
-                                value={userId}
-                            />
-                        </div>
-                        <div>
                             <Label className="block text-sm font-medium leading-6 text-gray-700" value="Título: *" />
                             <TextInput
                                 color="bg-zinc-400"
                                 id="eventTitle"
                                 onChange={handleChange}
-                                value={values.eventTitle}
                             />
                             <FieldError error={errors.eventTitle} />
                         </div>
@@ -100,7 +83,6 @@ export function EventAddForm() {
                                 id="projectTitle"
                                 list="projectList"
                                 onChange={handleChange}
-                                value={values.projectTitle}
                             />
                             <datalist id="projectList">
                                 {projectMock.filter((project) =>
@@ -121,7 +103,6 @@ export function EventAddForm() {
                                 color="bg-zinc-400"
                                 id="eventDescription"
                                 onChange={handleChange}
-                                value={values.eventDescription}
                             />
                             <FieldError error={errors.eventDescription} />
                         </div>
@@ -132,7 +113,6 @@ export function EventAddForm() {
                                 color="bg-zinc-400"
                                 id="eventDate"
                                 onChange={handleChange}
-                                value={values.eventDate}
                             />
                         </div>
                         <div>
@@ -141,7 +121,6 @@ export function EventAddForm() {
                                 color="bg-zinc-400"
                                 id="eventStatus"
                                 onChange={handleChange}
-                                value={values.eventStatus}
                             >
                                 <option></option>
                                 <option>Indefinido</option>
@@ -159,7 +138,6 @@ export function EventAddForm() {
                                 color="bg-zinc-400"
                                 id="eventImage"
                                 onChange={handleChange}
-                                value={values.eventImage}
                             />
                         </div>
                         <div className="mt-5 flex items-center justify-end gap-x-4">
@@ -175,22 +153,13 @@ export function EventAddForm() {
 
 export function EventEditForm({ params: eventId }: Props) {
     const notification = useNotification();
-    const auth = useAuth();
-    const userId = auth.getUserSession()?.id;
     const navigate = useNavigate();
 
     const query = "";
 
-    const { values, handleChange, errors } = useFormik<Event>({
+    const { handleChange, errors } = useFormik<Event>({
         initialValues: {
-            eventId: eventId,
-            eventTitle: "",
-            eventDescription: "",
-            eventImage: "",
-            eventDate: "",
-            eventStatus: "",
-            projectTitle: "",
-            userId: userId
+            eventId: eventId
         },
         validationSchema: eventValidationSchema,
         onSubmit: onSubmit
@@ -210,20 +179,11 @@ export function EventEditForm({ params: eventId }: Props) {
                 </div>
                 <form onSubmit={onSubmit} className="space-y-2 w-2/3">
                     <div>
-                        <TextInput
-                            type="hidden"
-                            id="id"
-                            onChange={handleChange}
-                            value={eventId}
-                        />
-                    </div>
-                    <div>
                         <Label className="block text-sm font-medium leading-6 text-gray-700" value="Título: *" />
                         <TextInput
                             color="bg-zinc-400"
                             id="eventTitle"
                             onChange={handleChange}
-                            value={values.eventTitle}
                         />
                         <FieldError error={errors.eventTitle} />
                     </div>
@@ -234,7 +194,6 @@ export function EventEditForm({ params: eventId }: Props) {
                             id="projectTitle"
                             list="projectList"
                             onChange={handleChange}
-                            value={values.projectTitle}
                         />
                         <datalist id="projectList">
                             {projectMock.filter((project) =>
@@ -256,7 +215,6 @@ export function EventEditForm({ params: eventId }: Props) {
                             color="bg-zinc-400"
                             id="eventDescription"
                             onChange={handleChange}
-                            value={values.eventDescription}
                         />
                         <FieldError error={errors.eventDescription} />
                     </div>
@@ -267,7 +225,6 @@ export function EventEditForm({ params: eventId }: Props) {
                             color="bg-zinc-400"
                             id="eventDate"
                             onChange={handleChange}
-                            value={values.eventDate}
                         />
                     </div>
                     <div>
@@ -276,7 +233,6 @@ export function EventEditForm({ params: eventId }: Props) {
                             color="bg-zinc-400"
                             id="eventStatus"
                             onChange={handleChange}
-                            value={values.eventStatus}
                         >
                             <option></option>
                             <option>Indefinido</option>
@@ -294,7 +250,6 @@ export function EventEditForm({ params: eventId }: Props) {
                             color="bg-zinc-400"
                             id="eventImage"
                             onChange={handleChange}
-                            value={values.eventImage}
                         />
                     </div>
                     <div className="mt-5 flex items-center justify-end gap-x-4">
