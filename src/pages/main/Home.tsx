@@ -31,7 +31,6 @@ export const customTheme: CustomFlowbiteTheme = {
 };
 
 export default function Home() {
-
     const posts = postMock.sort(x => x.postId);
     const projects = projectMock.sort(x => x.id);
     const categories = categoryMock.sort(x => x.id);
@@ -41,7 +40,7 @@ export default function Home() {
     return (
         <>
             <div>
-                <div className="flex flex-col md:flex-row md:items-center justify-between mb-3 space-y-2">
+                <div className="flex flex-col md:flex-row md:items-center justify-between my-4 space-y-4">
                     <Breadcrumb aria-label="breadcrumb">
                         <Breadcrumb.Item icon={FaIcons.FaHouse}>
                             <Link to="/">
@@ -110,7 +109,7 @@ export default function Home() {
                             <Flowbite theme={{ theme: customTheme }}>
                                 <Carousel>
                                     {posts.map(post => {
-                                        posts.length = 6
+                                        
                                         return (
                                             <div key={post.postId} className="flex justify-center items-center w-full">
                                                 <CarouselPostCard post={post} />
@@ -121,17 +120,14 @@ export default function Home() {
                             </Flowbite>
                         </div>
 
-                        <div className="mt-4 p-4">
-                            <div className="divide-y divide-gray-300">
+                        <div className="sm:mt-4 p-4 h-[360px] md:h-[410px]  overflow-hidden divide-y divide-gray-300">
                                 {posts.map(post => {
-                                    posts.length = 6
                                     return (
                                         <div key={post.postId}>
                                             <PostSmCard post={post} />
                                         </div>
                                     )
                                 })}
-                            </div>
                         </div>
                     </div>
                 </div>
@@ -142,11 +138,10 @@ export default function Home() {
                         Ver mais
                     </Link>
                 </div>
-                <div className="grid grid-cols-1 lg:grid-cols-2 gap-y-10 gap-x-6 items-start p-8">
+                <div className="grid grid-cols-1 lg:grid-cols-2 h-[194rem] md:h-[94rem] overflow-hidden gap-y-6 gap-x-6 items-start p-8">
                     {projects.map(project => {
-                        projects.length = 8
                         return (
-                            <div key={project.id} className="relative flex flex-col sm:flex-row xl:flex-col items-start ">
+                            <div key={project.id} >
                                 <ProjectCard project={project} />
                             </div>
                         )
@@ -159,9 +154,8 @@ export default function Home() {
                         Ver mais
                     </Link>
                 </div>
-                <div className="grid grid-cols-2 md:grid-cols-4 lg:grid-cols-6 gap-y-6 gap-x-4 items-start p-8">
+                <div className="grid grid-cols-2 md:grid-cols-4 lg:grid-cols-6 h-[35rem] md:h-[12rem] overflow-hidden gap-y-6 gap-x-4 items-start p-8">
                     {categories.map(category => {
-                        categories.length = 12
                         return (
                             <div key={category.id} >
                                 <CategoryCard category={category} />
@@ -176,11 +170,10 @@ export default function Home() {
                         Ver mais
                     </Link>
                 </div>
-                <div className="grid grid-cols-1 md:grid-cols-2 lg:grid-cols-3 gap-y-10 gap-x-6 items-start p-8">
+                <div className="grid grid-cols-1 md:grid-cols-2 lg:grid-cols-3 h-[207rem] md:h-[36rem] overflow-hidden gap-y-6 gap-x-6 items-start p-8">
                     {events.map(event => {
-                        events.length = 9
                         return (
-                            <div key={event.eventId} className="relative flex flex-col sm:flex-row xl:flex-col items-start ">
+                            <div key={event.eventId}>
                                 <EventCard event={event} />
                             </div>
                         )

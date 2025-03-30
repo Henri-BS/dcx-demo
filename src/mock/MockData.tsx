@@ -264,8 +264,8 @@ export const postMock = [
         "createdDate": "26/10/2024",
         "postImage": "https://sustentavel.com.br/wp-content/uploads/2020/07/Hortas-comunit%C3%A1rias-1.jpg",
         "userId": 30,
-        "username": "Ellias Santana",
-        "userImage": "https://cdn3.iconfinder.com/data/icons/diversity-avatars/64/catholic-priest-white-256.png",
+        "username": "Usuario01",
+        "userImage": "https://cdn.create.vista.com/api/media/small/252519530/stock-vector-user-icon-flat-style-person-icon-user-icon-web-site",
     },
     {
         "postId": 2,
@@ -275,8 +275,8 @@ export const postMock = [
         "createdDate": "26/10/2024",
         "postImage": "https://alimentandolaciencia.esciencia.es/wp-content/uploads/2020/05/huerto_port.jpg",
         "userId": 30,
-        "username": "Ellias Santana",
-        "userImage": "https://cdn3.iconfinder.com/data/icons/diversity-avatars/64/catholic-priest-white-256.png",
+        "username": "Usuario01",
+        "userImage": "https://cdn.create.vista.com/api/media/small/252519530/stock-vector-user-icon-flat-style-person-icon-user-icon-web-site",
     },
     {
         "postId": 3,
@@ -356,8 +356,8 @@ export const postMock = [
         "createdDate": "26/10/2024",
         "postImage": "https://wallpaperaccess.com/full/1667843.jpg",
         "userId": 30,
-        "username": "Ellias Santana",
-        "userImage": "https://cdn3.iconfinder.com/data/icons/diversity-avatars/64/catholic-priest-white-256.png",
+        "username": "Usuario01",
+        "userImage": "https://cdn.create.vista.com/api/media/small/252519530/stock-vector-user-icon-flat-style-person-icon-user-icon-web-site",
 
     },
     {
@@ -368,8 +368,8 @@ export const postMock = [
         "createdDate": "26/10/2024",
         "postImage": "https://escolatecnicansa.com.br/wp-content/uploads/2023/11/36-1110x630.jpg",
         "userId": 30,
-        "username": "Ellias Santana",
-        "userImage": "https://cdn3.iconfinder.com/data/icons/diversity-avatars/64/catholic-priest-white-256.png",
+        "username": "Usuario01",
+        "userImage": "https://cdn.create.vista.com/api/media/small/252519530/stock-vector-user-icon-flat-style-person-icon-user-icon-web-site",
         "userBio": "Um dedicado engenheiro agrônomo residente em Caxias, Maranhão. Graduado em Engenharia Agronômica pela Universidade Federal do Maranhão, sempre tive uma paixão pelo cultivo sustentável e pelas práticas agrícolas que promovem a harmonia entre o homem e a natureza.\n\nAo longo de minha carreira, tenho me destacado pelo meu compromisso com a inovação e a sustentabilidade no setor agrícola. Sou um dos principais colaboradores do projeto Agrobairros em Caxias, onde atuo como consultor e mentor para os agricultores locais. \n\nAcredito firmemente que a educação e a troca de conhecimentos são fundamentais para o sucesso da agricultura urbana. Frequentemente organizo palestras e workshops para compartilhar minhas experiências e incentivar a adoção de práticas sustentáveis. Além disso, sou reconhecido pela minha habilidade em criar soluções práticas e eficientes para os desafios enfrentados pelos agricultores, sempre buscando melhorar a qualidade e a produtividade das hortas comunitárias.\n\nFora do meu trabalho no projeto Agrobairros, sou um entusiasta da jardinagem e da permacultura, dedicando parte do meu tempo livre ao cultivo de plantas e hortaliças em minha própria casa. Minha dedicação e paixão pela agricultura não só contribuem para o desenvolvimento sustentável de Caxias, mas também inspiram a comunidade a valorizar e preservar o meio ambiente.\n\nBusco cada vez mais me tornar uma figura de valor no movimento de agricultura urbana em Caxias, e meu trabalho contínuo promete trazer ainda mais avanços e benefícios para a comunidade local."
     },
     {
@@ -423,8 +423,8 @@ export const projectMock = [
         "projectImage": "https://images.adsttc.com/media/images/65ba/c8e3/87f3/9376/5913/1264/medium_jpg/urban-agriculture-in-the-united-states-revitalizing-neighborhoods_7.jpg?1706739946",
         "createdDate": "26/10/2024",
         "userId": 30,
-        "username": "Ellias Santana",
-        "userImage": "https://cdn3.iconfinder.com/data/icons/diversity-avatars/64/catholic-priest-white-256.png",
+        "username": "Usuario01",
+        "userImage": "https://cdn.create.vista.com/api/media/small/252519530/stock-vector-user-icon-flat-style-person-icon-user-icon-web-site",
         "category": [
             { "categoryName": "Meio Ambiente" },
             { "categoryName": "Agricultura" },
@@ -551,7 +551,7 @@ export const projectMock = [
         "projectTitle": "Artes Visuais",
         "projectDescription": "O projeto municipal \"Artes Visuais\" da cidade de Caxias é uma iniciativa que busca promover a expressão artística, valorizar os talentos locais e democratizar o acesso à arte em suas diversas formas. \nEste projeto é parte do compromisso da cidade com o desenvolvimento cultural e a inclusão social, utilizando as artes visuais como uma ferramenta para educação, transformação social e fortalecimento da identidade cultural.\nO projeto é uma celebração da criatividade e da cultura, transformando a arte em um elemento central para o desenvolvimento humano e social da cidade.",
         "projectDetails": "\n### Objetivos\n- **Fomentar a Produção Artística:** Incentivar artistas locais a desenvolverem e exporem suas obras, criando um ambiente de valorização e reconhecimento.\n- **Educação e Formação:** Oferecer oficinas, cursos e palestras para capacitar jovens e adultos em técnicas de artes visuais, como pintura, escultura e fotografia.\n- **Acessibilidade Cultural:** Garantir que a arte esteja presente em diferentes espaços da cidade, como escolas, praças e centros culturais, alcançando toda a comunidade.\n### Atividades\n- **Exposições e Galerias:** Organização de mostras de arte em espaços públicos e privados, destacando obras de artistas locais e regionais.\n- **Oficinas e Workshops:** Realização de atividades práticas para ensinar técnicas artísticas, como pintura, desenho, escultura e design gráfico.\n- **Arte nas Escolas:** Implementação de programas educativos que integram as artes visuais ao currículo escolar, incentivando a criatividade e o pensamento crítico entre os estudantes.\n- **Eventos Culturais:** Promoção de festivais, feiras e concursos de arte que envolvam a comunidade e celebrem a diversidade artística de Caxias.\n### Impacto\n- **Desenvolvimento Cultural:** Fortalecimento da cena artística local, criando oportunidades para novos talentos e consolidando Caxias como um polo cultural.\n- **Inclusão Social:** Integração de diferentes grupos sociais por meio da arte, promovendo igualdade e participação comunitária.\n- **Educação Transformadora:** Estímulo ao aprendizado e à criatividade, especialmente entre crianças e jovens, contribuindo para sua formação integral.\n- **Valorização do Patrimônio:** Preservação e divulgação das tradições artísticas e culturais que fazem parte da identidade de Caxias.\n",
-        "projectImage": "https://todoporelarterd.com/wp-content/uploads/2019/12/Arte-visual-1.jpg",
+        "projectImage": "https://static.wixstatic.com/media/dbffca_cf6367d4c68d4e3aa56d659e86042aa1~mv2.jpg/v1/fill/w_788,h_525,al_c,lg_1,q_85,enc_auto/dbffca_cf6367d4c68d4e3aa56d659e86042aa1~mv2.jpg",
         "createdDate": "26/10/2024",
         "userId": 1,
         "username": "James Azevedo",
@@ -640,7 +640,7 @@ export const eventMock = [
         "projectId": 1,
         "projectTitle": "Agrobairros",
         "userId": 30,
-        "username": "Ellias Santana",
+        "username": "Usuario01",
         "users": [
             {
                 "userId": 4,
@@ -692,7 +692,7 @@ export const eventMock = [
         "projectId": 1,
         "projectTitle": "Agrobairros",
         "userId": 30,
-        "username": "Ellias Santana",
+        "username": "Usuario01",
         "users": [
             {
                 "userId": 4,
@@ -722,7 +722,7 @@ export const eventMock = [
         "projectId": 1,
         "projectTitle": "Agrobairros",
         "userId": 30,
-        "username": "Ellias Santana",
+        "username": "Usuario01",
         "users": [
             {
                 "userId": 4,
@@ -762,7 +762,7 @@ export const eventMock = [
         "projectId": 1,
         "projectTitle": "Agrobairros",
         "userId": 30,
-        "username": "Ellias Santana",
+        "username": "Usuario01",
         "users": [
             {
                 "userId": 6,
@@ -792,7 +792,7 @@ export const eventMock = [
         "projectId": 1,
         "projectTitle": "Agrobairros",
         "userId": 30,
-        "username": "Ellias Santana",
+        "username": "Usuario01",
         "users": [
             {
                 "userId": 5,
@@ -825,7 +825,7 @@ export const eventMock = [
         "projectId": 1,
         "projectTitle": "Agrobairros",
         "userId": 30,
-        "username": "Ellias Santana",
+        "username": "Usuario01",
         "users": [
             {
                 "userId": 8,
@@ -864,7 +864,7 @@ export const eventMock = [
         "projectId": 1,
         "projectTitle": "Agrobairros",
         "userId": 30,
-        "username": "Ellias Santana",
+        "username": "Usuario01",
         "users": [
             {
                 "userId": 4,
@@ -902,7 +902,7 @@ export const eventMock = [
         "projectId": 1,
         "projectTitle": "Agrobairros",
         "userId": 30,
-        "username": "Ellias Santana",
+        "username": "Usuario01",
         "users": [
             {
                 "userId": 5,
@@ -1155,8 +1155,8 @@ export const eventMock = [
             },
             {
                 "userId": 30,
-                "username": "Ellias Santana",
-                "userImage": "https://cdn3.iconfinder.com/data/icons/diversity-avatars/64/catholic-priest-white-256.png",
+                "username": "Usuario01",
+                "userImage": "https://cdn.create.vista.com/api/media/small/252519530/stock-vector-user-icon-flat-style-person-icon-user-icon-web-site",
             },
         ]
     },
@@ -1213,8 +1213,8 @@ export const eventMock = [
             },
             {
                 "userId": 30,
-                "username": "Ellias Santana",
-                "userImage": "https://cdn3.iconfinder.com/data/icons/diversity-avatars/64/catholic-priest-white-256.png",
+                "username": "Usuario01",
+                "userImage": "https://cdn.create.vista.com/api/media/small/252519530/stock-vector-user-icon-flat-style-person-icon-user-icon-web-site",
             },
             {
                 "userId": 31,
@@ -1393,7 +1393,7 @@ export const eventPostMock = [
         "projectId": 1,
         "projectTitle": "Agrobairros",
         "userId": 30,
-        "username": "Ellias Santana",
+        "username": "Usuario01",
         "postId": 1,
         "postTitle": "Janeiro Agro: Seminários, Hortas Comunitárias, Palestras e Atividades Práticas no Bairro Nova Caxias",
         "postImage": "https://sustentavel.com.br/wp-content/uploads/2020/07/Hortas-comunit%C3%A1rias-1.jpg",
@@ -1406,7 +1406,7 @@ export const eventPostMock = [
         "projectId": 1,
         "projectTitle": "Agrobairros",
         "userId": 30,
-        "username": "Ellias Santana",
+        "username": "Usuario01",
         "postId": 1,
         "postTitle": "Janeiro Agro: Seminários, Hortas Comunitárias, Palestras e Atividades Práticas no Bairro Nova Caxias",
         "postImage": "https://sustentavel.com.br/wp-content/uploads/2020/07/Hortas-comunit%C3%A1rias-1.jpg",
@@ -1419,7 +1419,7 @@ export const eventPostMock = [
         "projectId": 1,
         "projectTitle": "Agrobairros",
         "userId": 30,
-        "username": "Ellias Santana",
+        "username": "Usuario01",
         "postId": 1,
         "postTitle": "Janeiro Agro: Seminários, Hortas Comunitárias, Palestras e Atividades Práticas no Bairro Nova Caxias",
         "postImage": "https://sustentavel.com.br/wp-content/uploads/2020/07/Hortas-comunit%C3%A1rias-1.jpg",
@@ -1432,7 +1432,7 @@ export const eventPostMock = [
         "projectId": 1,
         "projectTitle": "Agrobairros",
         "userId": 30,
-        "username": "Ellias Santana",
+        "username": "Usuario01",
         "postId": 1,
         "postTitle": "Janeiro Agro: Seminários, Hortas Comunitárias, Palestras e Atividades Práticas no Bairro Nova Caxias",
         "postImage": "https://sustentavel.com.br/wp-content/uploads/2020/07/Hortas-comunit%C3%A1rias-1.jpg",
@@ -1445,7 +1445,7 @@ export const eventPostMock = [
         "projectId": 1,
         "projectTitle": "Agrobairros",
         "userId": 30,
-        "username": "Ellias Santana",
+        "username": "Usuario01",
         "postId": 2,
         "postTitle": "Fevereiro Agro: Eventos do projeto Agrobairros na Vila Conquista",
         "postImage": "https://alimentandolaciencia.esciencia.es/wp-content/uploads/2020/05/huerto_port.jpg",
@@ -1458,7 +1458,7 @@ export const eventPostMock = [
         "projectId": 1,
         "projectTitle": "Agrobairros",
         "userId": 30,
-        "username": "Ellias Santana",
+        "username": "Usuario01",
         "postId": 2,
         "postTitle": "Fevereiro Agro: Eventos do projeto Agrobairros na Vila Conquista",
         "postImage": "https://alimentandolaciencia.esciencia.es/wp-content/uploads/2020/05/huerto_port.jpg",
@@ -1471,7 +1471,7 @@ export const eventPostMock = [
         "projectId": 1,
         "projectTitle": "Agrobairros",
         "userId": 30,
-        "username": "Ellias Santana",
+        "username": "Usuario01",
         "postId": 2,
         "postTitle": "Fevereiro Agro: Eventos do projeto Agrobairros na Vila Conquista",
         "postImage": "https://alimentandolaciencia.esciencia.es/wp-content/uploads/2020/05/huerto_port.jpg",
@@ -1484,7 +1484,7 @@ export const eventPostMock = [
         "projectId": 1,
         "projectTitle": "Agrobairros",
         "userId": 30,
-        "username": "Ellias Santana",
+        "username": "Usuario01",
         "postId": 2,
         "postTitle": "Fevereiro Agro: Eventos do projeto Agrobairros na Vila Conquista",
         "postImage": "https://alimentandolaciencia.esciencia.es/wp-content/uploads/2020/05/huerto_port.jpg",
@@ -1939,9 +1939,9 @@ export const userMock = [
     },
     {
         "id": 30,
-        "username": "Ellias Santana",
-        "userImage": "https://cdn3.iconfinder.com/data/icons/diversity-avatars/64/catholic-priest-white-256.png",
-        "email": "ellias@gmail.com",
+        "username": "Usuario01",
+        "userImage": "https://cdn.create.vista.com/api/media/small/252519530/stock-vector-user-icon-flat-style-person-icon-user-icon-web-site",
+        "email": "usuario01@gmail.com",
         "password": "12345678",
         "userCoverImage": "https://www.fielackelectric.com/wp-content/uploads/2022/02/prlx-1-1-1024x410-1.jpg",
         "userBio": "Um dedicado engenheiro agrônomo residente em Caxias, Maranhão. Graduado em Engenharia Agronômica pela Universidade Federal do Maranhão, sempre tive uma paixão pelo cultivo sustentável e pelas práticas agrícolas que promovem a harmonia entre o homem e a natureza.\n\nAo longo de minha carreira, tenho me destacado pelo meu compromisso com a inovação e a sustentabilidade no setor agrícola. Sou um dos principais colaboradores do projeto Agrobairros em Caxias, onde atuo como consultor e mentor para os agricultores locais. \n\nAcredito firmemente que a educação e a troca de conhecimentos são fundamentais para o sucesso da agricultura urbana. Frequentemente organizo palestras e workshops para compartilhar minhas experiências e incentivar a adoção de práticas sustentáveis. Além disso, sou reconhecido pela minha habilidade em criar soluções práticas e eficientes para os desafios enfrentados pelos agricultores, sempre buscando melhorar a qualidade e a produtividade das hortas comunitárias.\n\nFora do meu trabalho no projeto Agrobairros, sou um entusiasta da jardinagem e da permacultura, dedicando parte do meu tempo livre ao cultivo de plantas e hortaliças em minha própria casa. Minha dedicação e paixão pela agricultura não só contribuem para o desenvolvimento sustentável de Caxias, mas também inspiram a comunidade a valorizar e preservar o meio ambiente.\n\nBusco cada vez mais me tornar uma figura de valor no movimento de agricultura urbana em Caxias, e meu trabalho contínuo promete trazer ainda mais avanços e benefícios para a comunidade local.",

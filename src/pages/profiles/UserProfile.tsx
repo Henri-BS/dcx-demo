@@ -1,6 +1,6 @@
 import { ProjectCard } from "components/cards/ProjectCard";
 
-import { Breadcrumb, Tabs } from "flowbite-react";
+import { Accordion, Breadcrumb, Tabs } from "flowbite-react";
 
 import * as FaIcons from "react-icons/fa6";
 import { Props } from "resources";
@@ -44,8 +44,8 @@ export function UserPersonalProfile() {
                 <div>
                     {userById.map(user => (
                         <div>
-                            <div className="flex flex-wrap items-center  justify-center">
-                                <div className="container lg:w-full bg-white shadow-xl transform duration-200 easy-in-out">
+                            <div className="flex flex-wrap items-center justify-center my-4">
+                                <div className="lg:w-full bg-white  transform duration-200 easy-in-out">
                                     <div className=" h-40 overflow-hidden" >
                                         <img className="w-full rounded-t-lg" src={user?.userCoverImage ?? require("assets/img/user_cover.png")} alt={user?.username} />
                                     </div>
@@ -55,31 +55,51 @@ export function UserPersonalProfile() {
                                     <div className="text-gray-600 text-center px-14">
                                         <h2 className="text-gray-800 text-3xl font-bold">{user?.username}</h2>
                                         <p className="mt-2 text-md font-semibold"> {user?.userLocation} </p>
-                                        <p className="mt-2 text-lg text-justify">
-                                            <CustomMarkdown item={user?.userBio} />
-                                        </p>
+                                        <Accordion collapseAll className="my-6 ">
+                                            <Accordion.Panel>
+                                                <Accordion.Title>
+                                                    <h2 className="flex flex-row items-center gap-2 text-xl text-slate-800 "><FaIcons.FaPencil />Bio</h2>
+                                                </Accordion.Title>
+                                                <Accordion.Content className="p-2">
+
+                                                    <p className="mt-2 text-lg text-justify">
+                                                        <CustomMarkdown item={user?.userBio} />
+                                                    </p>
+                                                </Accordion.Content>
+                                            </Accordion.Panel>
+                                        </Accordion>
                                     </div>
-                                    <hr className="mt-6" />
                                 </div>
                             </div>
                             <Tabs className="p-1 text-slate-600 rounded-md overflow-x-scroll" variant="fullWidth">
-                                <Tabs.Item icon={FaIcons.FaCalendarCheck} title="Eventos Relacionados" >
-                                    <h2 className="mt-5 text-2xl text-zinc-800 ">Criados: </h2>
 
-                                    <div className="grid grid-cols-1 md:grid-cols-3 gap-y-10 gap-x-6 items-start p-8">
+                                <Tabs.Item icon={FaIcons.FaFolderClosed} title="Projetos Relacionados" >
+                                    <h2 className="mt-5 text-2xl text-zinc-800 ">Criados: </h2>
+                                    <div className="  grid grid-cols-1 gap-y-10 gap-x-6 items-start p-8 divide-y divide-gray-300">
+                                        {projects?.map(project => (
+                                            <div key={project.id}>
+                                                <ProjectCard project={project} />
+                                            </div>
+                                        ))}
+                                    </div>
+                                </Tabs.Item>
+                                <Tabs.Item icon={FaIcons.FaCalendarCheck} title="Eventos Relacionados" >
+
+                                    <h2 className="mt-5 text-2xl text-zinc-800 ">Criados: </h2>
+                                    <div className="grid grid-cols-1 items-start p-8 divide-y divide-gray-300">
                                         {myEvents?.map(event =>
-                                            <div key={event.eventId} className="relative flex flex-col sm:flex-row xl:flex-col items-start ">
+                                            <div key={event.eventId}>
                                                 <EventSmCard event={event} />
                                             </div>
                                         )}
                                     </div>
 
                                     <h2 className="mt-5 text-2xl text-zinc-800 ">Participando: </h2>
-                                    <div className="grid grid-cols-1 md:grid-cols-3 gap-y-10 gap-x-6 items-start p-8">
+                                    <div className="grid grid-cols-1 items-start p-8 divide-y divide-gray-300">
                                         {eventMock?.map(event =>
                                             event.users?.filter(x => x.userId.toString() === userId)
                                                 .map(x =>
-                                                    <div key={event.eventId} className="relative flex flex-col sm:flex-row xl:flex-col items-start ">
+                                                    <div key={event.eventId}>
                                                         <span aria-label={`${x.userId}`} />
                                                         <EventSmCard event={event} />
                                                     </div>
@@ -87,21 +107,12 @@ export function UserPersonalProfile() {
                                         )}
                                     </div>
                                 </Tabs.Item>
-
-                                <Tabs.Item icon={FaIcons.FaFolderClosed} title="Projetos Relacionados" >
-                                    <div className="  grid grid-cols-1 xl:grid-cols-2 gap-y-10 gap-x-6 items-start p-8">
-                                        {projects?.map(project => (
-                                            <div key={project.id} className="relative flex flex-col sm:flex-row xl:flex-col items-start ">
-                                                <ProjectCard project={project} />
-                                            </div>
-                                        ))}
-                                    </div>
-                                </Tabs.Item>
                                 <Tabs.Item icon={FaIcons.FaNewspaper} title="Postagens Relacionados">
-                                    <div className="  grid grid-cols-1 lg:grid-cols-2 gap-y-10 gap-x-6 items-start p-8">
+                                    <h2 className="mt-5 text-2xl text-zinc-800 ">Criados: </h2>
+                                    <div className="  grid grid-cols-1 gap-x-2 w-full items-start p-8 divide-y divide-gray-300">
                                         {postMock?.filter(post => post.userId.toString() === userId)
                                             .map(post => (
-                                                <div key={post.postId} className="relative flex flex-col sm:flex-row xl:flex-col items-start ">
+                                                <div key={post.postId} >
                                                     <PostSmCard post={post} />
                                                 </div>
                                             ))}
