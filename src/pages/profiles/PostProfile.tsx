@@ -24,11 +24,11 @@ export function PostProfile() {
         const [edit, setEdit] = useState(false);
         const [deleteModal, setDeleteModal] = useState(false);
         const [addEvent, setAddEvent] = useState(false);
-            
+
         const postById = postMock.filter(x => x.postId.toString() === postId);
         const posts = postMock.sort(x => x.postId);
         const events = eventPostMock.filter(x => x.postId.toString() === postId);
-        
+
         const deletePost = () => {
             setDeleteModal(false)
             navigate("/postagens")
@@ -38,8 +38,7 @@ export function PostProfile() {
 
         return (
             <div>
-                <div className="flex flex-col md:flex-row justify-between md:items-center my-4 space-y-4 text-lg font-semibold text-gray-700">
-
+                <div className="flex flex-col md:flex-row justify-between md:items-end mb-4 space-y-4 text-lg font-semibold text-gray-700">
                     <Breadcrumb aria-label="breadcrumb">
                         <Breadcrumb.Item icon={FaIcons.FaHouse}>
                             <Link to="/">
@@ -69,27 +68,27 @@ export function PostProfile() {
                             Deletar
                         </Dropdown.Item>
                     </Dropdown>
-
-                    <Modal show={deleteModal} size="md" onClose={() => setDeleteModal(false)} popup>
-                        <Modal.Header />
-                        <Modal.Body>
-                            <div className="text-center">
-                                <FaIcons.FaExclamation className="mx-auto mb-4 h-14 w-14 text-gray-400 dark:text-gray-200 border-4 p-2  rounded-full" />
-                                <h3 className="mb-5 text-lg font-normal text-gray-500 dark:text-gray-400">
-                                    Deseja deletar esta postagem?
-                                </h3>
-                                <div className="flex justify-center gap-4">
-                                    <Button color="failure" onClick={() => deletePost()} >
-                                        <span onClick={() => setDeleteModal(false)}>{"Deletar"}</span>
-                                    </Button>
-                                    <Button color="gray" onClick={() => setDeleteModal(false)}>
-                                        Cancelar
-                                    </Button>
-                                </div>
-                            </div>
-                        </Modal.Body>
-                    </Modal>
                 </div>
+
+                <Modal show={deleteModal} size="md" onClose={() => setDeleteModal(false)} popup>
+                    <Modal.Header />
+                    <Modal.Body>
+                        <div className="text-center">
+                            <FaIcons.FaExclamation className="mx-auto mb-4 h-14 w-14 text-gray-400 dark:text-gray-200 border-4 p-2  rounded-full" />
+                            <h3 className="mb-5 text-lg font-normal text-gray-500 dark:text-gray-400">
+                                Deseja deletar esta postagem?
+                            </h3>
+                            <div className="flex justify-center gap-4">
+                                <Button color="failure" onClick={() => deletePost()} >
+                                    <span onClick={() => setDeleteModal(false)}>{"Deletar"}</span>
+                                </Button>
+                                <Button color="gray" onClick={() => setDeleteModal(false)}>
+                                    Cancelar
+                                </Button>
+                            </div>
+                        </div>
+                    </Modal.Body>
+                </Modal>
 
                 <Modal show={addEvent} size="3xl" onClose={() => setAddEvent(false)} popup>
                     <Modal.Header />

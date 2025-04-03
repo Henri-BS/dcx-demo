@@ -39,7 +39,7 @@ export function EventDetails({ params: eventId }: Props) {
 
     return (
         <div>
-            <div className="flex flex-col md:flex-row justify-between md:items-center my-4 space-y-4 text-lg font-semibold text-gray-700">
+            <div className="flex flex-col md:flex-row justify-between md:items-end mb-4 space-y-4 text-lg font-semibold text-gray-700">
                 <Breadcrumb aria-label="breadcrumb">
                     <Breadcrumb.Item icon={FaIcons.FaHouse}>
                         <Link to="/">

@@ -4,7 +4,7 @@ import { CarouselPostCard, PostSmCard } from "components/cards/PostCard";
 import { ProjectCard } from "components/cards/ProjectCard";
 import { CustomFlowbiteTheme, Flowbite, Carousel, Accordion, Banner, Breadcrumb, Button, Modal } from "flowbite-react";
 import { Link } from "react-router-dom";
-import  * as FaIcons from "react-icons/fa6";
+import * as FaIcons from "react-icons/fa6";
 import { categoryMock, eventMock, postMock, projectMock } from "mock/MockData";
 import { useState } from "react";
 
@@ -40,7 +40,7 @@ export default function Home() {
     return (
         <>
             <div>
-                <div className="flex flex-col md:flex-row md:items-center justify-between my-4 space-y-4">
+                <div className="flex flex-col md:flex-row md:items-center justify-between mb-4">
                     <Breadcrumb aria-label="breadcrumb">
                         <Breadcrumb.Item icon={FaIcons.FaHouse}>
                             <Link to="/">
@@ -48,25 +48,26 @@ export default function Home() {
                             </Link>
                         </Breadcrumb.Item>
                     </Breadcrumb>
-                    <Banner className="md:w-80 ">
-                        <div className="flex w-full justify-between border border-red-300 rounded-full hover:border-red-500 transiton duration-500 cursor-pointer bg-gray-50 " >
-                            <p className="flex items-center w-full rounded-l-full gap-x-2 text-sm font-bold text-red-500 px-2" onClick={() => setInfoModal(true)}>
-                                <FaIcons.FaInfo className="text-red-500 border-2 border-red-500 p-[2px] text-xl rounded-full" /> Versão Demonstrativa
-                            </p>
-                            <Banner.CollapseButton color="gray" className="border-0 rounded-r-full bg-transparent text-gray-500">
-                                <FaIcons.FaX />
-                            </Banner.CollapseButton>
-                        </div>
-                    </Banner>
+                        <Banner className="md:w-80 mt-4 md:m-0">
+                            <div className="flex w-full justify-between border border-red-300 rounded-full hover:border-red-500 transiton duration-500 cursor-pointer bg-gray-50 " >
+
+                                    <p className="flex items-center w-full rounded-l-full gap-x-2 text-sm font-bold text-red-500 px-2" onClick={() => setInfoModal(true)}>
+                                        <FaIcons.FaInfo className="text-red-500 border-2 border-red-500 p-[2px] text-xl rounded-full" /> Versão Demonstrativa
+                                    </p>
+                                <Banner.CollapseButton color="gray" className="border-0 rounded-r-full bg-transparent text-gray-500">
+                                    <FaIcons.FaX />
+                                </Banner.CollapseButton>
+                            </div>
+                        </Banner>
                 </div>
                 <Modal show={infoModal} size="2xl" onClose={() => setInfoModal(false)}>
                     <Modal.Header>Versão Demonstrativa</Modal.Header>
                     <Modal.Body>
-                        <div className="text-gray-600 text-md">
+                        <div className="text-gray-600 text-sm md:text-md">
                             Esta é uma demonstração com funcionalidades limitadas, possibilitando apenas a visualização de dados estáticos.
-                            <br/>
+                            <br />
                             Funcionalidades como: cadastro, login, adição, atualização ou remoção de conteúdo são meramente visuais e não implicam em alterações na plataforma.
-                            <br/>
+                            <br />
                             Para saber mais sobre todas as funcionalidades disponíveis, acesse o link do projeto completo no GitHub e veja a descrição:
                             <a href="https://github.com/Henri-BS/diario-caxias" className=" mx-2 text-blue-600 hover:text-blue-400 hover:underline">Diário Caxias GitHub</a>
                         </div>
@@ -109,7 +110,7 @@ export default function Home() {
                             <Flowbite theme={{ theme: customTheme }}>
                                 <Carousel>
                                     {posts.map(post => {
-                                        
+
                                         return (
                                             <div key={post.postId} className="flex justify-center items-center w-full">
                                                 <CarouselPostCard post={post} />
@@ -120,14 +121,14 @@ export default function Home() {
                             </Flowbite>
                         </div>
 
-                        <div className="sm:mt-4 p-4 h-[360px] md:h-[410px]  overflow-hidden divide-y divide-gray-300">
-                                {posts.map(post => {
-                                    return (
-                                        <div key={post.postId}>
-                                            <PostSmCard post={post} />
-                                        </div>
-                                    )
-                                })}
+                        <div className="sm:mt-4 p-4 h-[360px] md:h-[410px] overflow-hidden divide-y divide-gray-300">
+                            {posts.map(post => {
+                                return (
+                                    <div key={post.postId}>
+                                        <PostSmCard post={post} />
+                                    </div>
+                                )
+                            })}
                         </div>
                     </div>
                 </div>
@@ -138,7 +139,7 @@ export default function Home() {
                         Ver mais
                     </Link>
                 </div>
-                <div className="grid grid-cols-1 lg:grid-cols-2 h-[194rem] md:h-[94rem] overflow-hidden gap-y-6 gap-x-6 items-start p-8">
+                <div className="grid grid-cols-1 lg:grid-cols-2 h-[193rem] md:h-[47rem] overflow-hidden gap-6 items-start p-4">
                     {projects.map(project => {
                         return (
                             <div key={project.id} >
@@ -154,7 +155,7 @@ export default function Home() {
                         Ver mais
                     </Link>
                 </div>
-                <div className="grid grid-cols-2 md:grid-cols-4 lg:grid-cols-6 h-[35rem] md:h-[12rem] overflow-hidden gap-y-6 gap-x-4 items-start p-8">
+                <div className="grid grid-cols-2 md:grid-cols-4 lg:grid-cols-6 h-[34rem] md:h-[12rem] overflow-hidden gap-6 items-start p-4">
                     {categories.map(category => {
                         return (
                             <div key={category.id} >
@@ -170,7 +171,7 @@ export default function Home() {
                         Ver mais
                     </Link>
                 </div>
-                <div className="grid grid-cols-1 md:grid-cols-2 lg:grid-cols-3 h-[207rem] md:h-[36rem] overflow-hidden gap-y-6 gap-x-6 items-start p-8">
+                <div className="grid grid-cols-1 md:grid-cols-2 lg:grid-cols-3 h-[207rem] md:h-[36rem] overflow-hidden gap-6 items-start p-4">
                     {events.map(event => {
                         return (
                             <div key={event.eventId}>

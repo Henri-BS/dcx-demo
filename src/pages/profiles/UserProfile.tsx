@@ -45,7 +45,7 @@ export function UserPersonalProfile() {
                     {userById.map(user => (
                         <div>
                             <div className="flex flex-wrap items-center justify-center my-4">
-                                <div className="lg:w-full bg-white  transform duration-200 easy-in-out">
+                                <div className="lg:w-full bg-white transform duration-200 easy-in-out">
                                     <div className=" h-40 overflow-hidden" >
                                         <img className="w-full rounded-t-lg" src={user?.userCoverImage ?? require("assets/img/user_cover.png")} alt={user?.username} />
                                     </div>
@@ -55,27 +55,27 @@ export function UserPersonalProfile() {
                                     <div className="text-gray-600 text-center px-14">
                                         <h2 className="text-gray-800 text-3xl font-bold">{user?.username}</h2>
                                         <p className="mt-2 text-md font-semibold"> {user?.userLocation} </p>
-                                        <Accordion collapseAll className="my-6 ">
-                                            <Accordion.Panel>
-                                                <Accordion.Title>
-                                                    <h2 className="flex flex-row items-center gap-2 text-xl text-slate-800 "><FaIcons.FaPencil />Bio</h2>
-                                                </Accordion.Title>
-                                                <Accordion.Content className="p-2">
-
-                                                    <p className="mt-2 text-lg text-justify">
-                                                        <CustomMarkdown item={user?.userBio} />
-                                                    </p>
-                                                </Accordion.Content>
-                                            </Accordion.Panel>
-                                        </Accordion>
                                     </div>
                                 </div>
                             </div>
-                            <Tabs className="p-1 text-slate-600 rounded-md overflow-x-scroll" variant="fullWidth">
+                            <Accordion collapseAll className="my-6 ">
+                                <Accordion.Panel>
+                                    <Accordion.Title>
+                                        <h2 className="flex flex-row items-center gap-2 text-xl text-slate-800 "><FaIcons.FaPencil />Bio</h2>
+                                    </Accordion.Title>
+                                    <Accordion.Content className="p-2">
 
+                                        <p className="mt-2 text-md md:text-lg ">
+                                            <CustomMarkdown item={user?.userBio} />
+                                        </p>
+                                    </Accordion.Content>
+                                </Accordion.Panel>
+                            </Accordion>
+
+                            <Tabs className="p-1 text-slate-600 rounded-md overflow-x-scroll" variant="fullWidth">
                                 <Tabs.Item icon={FaIcons.FaFolderClosed} title="Projetos Relacionados" >
                                     <h2 className="mt-5 text-2xl text-zinc-800 ">Criados: </h2>
-                                    <div className="  grid grid-cols-1 gap-y-10 gap-x-6 items-start p-8 divide-y divide-gray-300">
+                                    <div className="grid grid-cols-1 gap-y-10 gap-x-6 items-start p-8 divide-y divide-gray-300">
                                         {projects?.map(project => (
                                             <div key={project.id}>
                                                 <ProjectCard project={project} />
@@ -84,7 +84,6 @@ export function UserPersonalProfile() {
                                     </div>
                                 </Tabs.Item>
                                 <Tabs.Item icon={FaIcons.FaCalendarCheck} title="Eventos Relacionados" >
-
                                     <h2 className="mt-5 text-2xl text-zinc-800 ">Criados: </h2>
                                     <div className="grid grid-cols-1 items-start p-8 divide-y divide-gray-300">
                                         {myEvents?.map(event =>
@@ -107,9 +106,9 @@ export function UserPersonalProfile() {
                                         )}
                                     </div>
                                 </Tabs.Item>
-                                <Tabs.Item icon={FaIcons.FaNewspaper} title="Postagens Relacionados">
+                                <Tabs.Item icon={FaIcons.FaNewspaper} title="Postagens Relacionadas">
                                     <h2 className="mt-5 text-2xl text-zinc-800 ">Criados: </h2>
-                                    <div className="  grid grid-cols-1 gap-x-2 w-full items-start p-8 divide-y divide-gray-300">
+                                    <div className="grid grid-cols-1 gap-x-2 w-full items-start p-8 divide-y divide-gray-300">
                                         {postMock?.filter(post => post.userId.toString() === userId)
                                             .map(post => (
                                                 <div key={post.postId} >
