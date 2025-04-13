@@ -38,7 +38,7 @@ export function PostProfile() {
 
         return (
             <div>
-                <div className="flex flex-col md:flex-row justify-between md:items-end mb-4 space-y-4 text-lg font-semibold text-gray-700">
+                <div className="flex flex-col md:flex-row justify-between md:items-center text-lg font-semibold text-gray-700">
                     <Breadcrumb aria-label="breadcrumb">
                         <Breadcrumb.Item icon={FaIcons.FaHouse}>
                             <Link to="/">
@@ -174,6 +174,11 @@ export function PostProfile() {
                                     </div>
                                 }
                             </Tabs.Item>
+
+                            <Tabs.Item title="Comentários" icon={FaIcons.FaMessage} >
+                                <p className="mb-1 py-10 text-center block font-semibold text-3xl leading-6 text-slate-600">Em Desenvolvimento</p>
+                            </Tabs.Item>
+
                             <Tabs.Item title="Galeria" icon={FaIcons.FaImages} >
                                 <p className="mb-1 py-10 text-center block font-semibold text-3xl leading-6 text-slate-600">Em Desenvolvimento</p>
                             </Tabs.Item>

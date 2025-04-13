@@ -40,9 +40,9 @@ export default function Categories() {
                     value={query}
                     onChange={(e) => setQuery(e.target.value)}
                 />
-                <div className="grid grid-cols-1 md:grid-cols-4 lg:grid-cols-6 gap-y-10 gap-x-6 items-start p-8">
+                <div className="grid grid-cols-1 md:grid-cols-4 lg:grid-cols-6 gap-y-10 gap-x-6 items-start mt-5">
                     {categories.map(category => (
-                        <div key={category?.id} className="relative flex flex-col sm:flex-row xl:flex-col items-start ">
+                        <div key={category?.id} className="relative flex justify-center">
                             <CategoryCard category={category} />
                         </div>
                     ))}

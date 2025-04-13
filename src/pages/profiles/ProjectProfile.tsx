@@ -28,7 +28,7 @@ export function ProjectProfile() {
         const [deleteModal, setDeleteModal] = useState(false);
         const navigate = useNavigate();
 
-        
+
         const projectById = projectMock.filter(x => x.id.toString() === projectId);
         const eventByProject = eventMock.filter(x => x.projectId?.toString() === projectId);
         const posts = eventPostMock?.filter((post, index, self) => {
@@ -39,10 +39,10 @@ export function ProjectProfile() {
             navigate("/projetos")
             notification.notify("Deletado com sucesso!", "success");
         }
-        
+
         return (
             <div>
-                <div className="flex flex-col md:flex-row justify-between md:items-end mb-4 space-y-4 text-lg font-semibold text-gray-700">
+                <div className="flex flex-col md:flex-row justify-between md:items-center text-lg font-semibold text-gray-700">
                     <Breadcrumb aria-label="breadcrumb">
                         <Breadcrumb.Item icon={FaIcons.FaHouse}>
                             <Link to="/">

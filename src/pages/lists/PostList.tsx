@@ -9,7 +9,7 @@ import { Link } from "react-router-dom";
 
 export default function Posts() {
     const [query, setQuery] = useState("");
-    
+
     const filter = () => {
         return postMock.filter(item =>
             item.postTitle.toUpperCase().includes(query.toLocaleUpperCase()) ||
@@ -40,10 +40,10 @@ export default function Posts() {
                     value={query}
                     onChange={(e) => setQuery(e.target.value)}
                 />
-                <div className="grid grid-cols-1 md:grid-cols-2 lg:grid-cols-3 gap-y-10 gap-x-10 items-start p-8">
+                <div className="grid grid-cols-1 md:grid-cols-2 lg:grid-cols-3 gap-y-6 gap-x-4 items-start mt-5">
                     {posts?.map(post => {
                         return (
-                            <div key={post.postId} className="relative flex sm:flex-row xl:flex-col items-start ">
+                            <div key={post.postId} className="relative flex justify-center">
                                 <PostCard post={post} />
                             </div>
                         )
